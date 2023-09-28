@@ -1,0 +1,101 @@
+2023-06-08 12:41:11 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 12:41:11 error: [Cake\Database\Exception\MissingConnectionException] Connection to Mysql could not be established: SQLSTATE[HY000] [1045] Access denied for user 'my_app'@'localhost' (using password: YES) in C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver.php on line 133
+Exception Attributes: array (
+  'driver' => 'Mysql',
+  'reason' => 'SQLSTATE[HY000] [1045] Access denied for user \'my_app\'@\'localhost\' (using password: YES)',
+)
+Stack Trace:
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:164
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Schema\SchemaDialect.php:51
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:216
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:53
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Connection.php:418
+- C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php:87
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\BaseCommand.php:189
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php:334
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\laragon\www\legacytree\bin\cake.php:12
+
+Caused by: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'my_app'@'localhost' (using password: YES) in C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver.php on line 125
+Stack Trace:
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver.php:125
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver.php:131
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:164
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Schema\SchemaDialect.php:51
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php:216
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:53
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Database\Connection.php:418
+- C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php:87
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\BaseCommand.php:189
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php:334
+- C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\laragon\www\legacytree\bin\cake.php:12
+
+2023-06-08 12:42:37 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 12:42:48 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 12:43:00 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:16:49 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:16:55 warning: Association property name "projects" clashes with field of same name of table "goals". You should explicitly specify the "propertyName" option.
+Trace:
+Cake\ORM\Association::getProperty() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\ORM\Association.php, line 607
+Bake\Command\ModelCommand::getEntityPropertySchema() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 712
+Bake\Command\ModelCommand::getTableContext() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 163
+Bake\Command\ModelCommand::bake() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 112
+Bake\Command\ModelCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 94
+Bake\Command\ModelAllCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelAllCommand.php, line 89
+Cake\Console\BaseCommand::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\BaseCommand.php, line 189
+Cake\Console\CommandRunner::runCommand() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 334
+Cake\Console\CommandRunner::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 172
+[main] C:\laragon\www\legacytree\bin\cake.php, line 12
+
+2023-06-08 13:16:55 warning: Association property name "users" clashes with field of same name of table "goals". You should explicitly specify the "propertyName" option.
+Trace:
+Cake\ORM\Association::getProperty() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\ORM\Association.php, line 607
+Bake\Command\ModelCommand::getEntityPropertySchema() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 712
+Bake\Command\ModelCommand::getTableContext() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 163
+Bake\Command\ModelCommand::bake() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 112
+Bake\Command\ModelCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelCommand.php, line 94
+Bake\Command\ModelAllCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\ModelAllCommand.php, line 89
+Cake\Console\BaseCommand::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\BaseCommand.php, line 189
+Cake\Console\CommandRunner::runCommand() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 334
+Cake\Console\CommandRunner::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 172
+[main] C:\laragon\www\legacytree\bin\cake.php, line 12
+
+2023-06-08 13:17:26 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:17:27 warning: Association property name "projects" clashes with field of same name of table "goals". You should explicitly specify the "propertyName" option.
+Trace:
+Cake\ORM\Association::getProperty() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\ORM\Association.php, line 607
+Bake\Utility\Model\AssociationFilter::filterAssociations() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Utility\Model\AssociationFilter.php, line 96
+Bake\Command\TemplateCommand::_filteredAssociations() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateCommand.php, line 453
+Bake\Command\TemplateCommand::_loadController() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateCommand.php, line 306
+Bake\Command\TemplateCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateCommand.php, line 144
+Bake\Command\TemplateAllCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateAllCommand.php, line 70
+Cake\Console\BaseCommand::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\BaseCommand.php, line 189
+Cake\Console\CommandRunner::runCommand() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 334
+Cake\Console\CommandRunner::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 172
+[main] C:\laragon\www\legacytree\bin\cake.php, line 12
+
+2023-06-08 13:17:27 warning: Association property name "users" clashes with field of same name of table "goals". You should explicitly specify the "propertyName" option.
+Trace:
+Cake\ORM\Association::getProperty() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\ORM\Association.php, line 607
+Bake\Utility\Model\AssociationFilter::filterAssociations() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Utility\Model\AssociationFilter.php, line 96
+Bake\Command\TemplateCommand::_filteredAssociations() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateCommand.php, line 453
+Bake\Command\TemplateCommand::_loadController() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateCommand.php, line 306
+Bake\Command\TemplateCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateCommand.php, line 144
+Bake\Command\TemplateAllCommand::execute() C:\laragon\www\legacytree\vendor\cakephp\bake\src\Command\TemplateAllCommand.php, line 70
+Cake\Console\BaseCommand::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\BaseCommand.php, line 189
+Cake\Console\CommandRunner::runCommand() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 334
+Cake\Console\CommandRunner::run() C:\laragon\www\legacytree\vendor\cakephp\cakephp\src\Console\CommandRunner.php, line 172
+[main] C:\laragon\www\legacytree\bin\cake.php, line 12
+
+2023-06-08 13:17:49 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:20:09 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:20:20 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:20:27 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:20:33 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:20:45 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:20:57 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:21:08 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:21:19 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-06-08 13:21:28 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
