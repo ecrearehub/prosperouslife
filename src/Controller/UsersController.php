@@ -19,7 +19,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
-        $this->Authentication->allowUnauthenticated(['login', 'problemswithlogin', 'forgotpassword', 'dashboard']);
+        $this->Authentication->allowUnauthenticated(['login', 'problemswithlogin', 'forgotpassword']);
     }
 
     /**
@@ -160,42 +160,42 @@ class UsersController extends AppController
         }
     }
 
-public function logout()
-{
-    $this->Authentication->logout();
+    public function logout()
+    {
+        $this->Authentication->logout();
 
-    return $this->redirect(['controller' => 'Users', 'action' => 'login']);
-}
-
-public function dashboard()
-{
-    $this->viewBuilder()->setLayout('dashboard');
-    $user = $this->Authentication->getIdentity();
-    $this->set(compact('user'));
-}
-
-public function avatar()
-{
-    $identity = $this->request->getAttribute('authentication')->getIdentity();
-
-    $png = APP.'Files'.DS.'profilethumb'.DS.$identity->id.'.png';
-    $jpg = APP.'Files'.DS.'profilethumb'.DS.$identity->id.'.jpg';
-    $jpeg = APP.'Files'.DS.'profilethumb'.DS.$identity->id.'.jpeg';
-
-    if (file_exists($png)) {
-        $path = $png;
-    } elseif (file_exists($jpg)) {
-        $path = $jpg;
-    } elseif (file_exists($jpeg)) {
-        $path = $jpeg;
-    } else {
-        $path = APP.'Files'.DS.'profilethumb'.DS.'profilethumb.png';
+        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
     }
 
-    $response = $this->response->withFile($path);
+    public function dashboard()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+        $user = $this->Authentication->getIdentity();
+        $this->set(compact('user'));
+    }
 
-    return $response;
-}
+    public function avatar()
+    {
+        $identity = $this->request->getAttribute('authentication')->getIdentity();
+
+        $png = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.png';
+        $jpg = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.jpg';
+        $jpeg = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.jpeg';
+
+        if (file_exists($png)) {
+            $path = $png;
+        } elseif (file_exists($jpg)) {
+            $path = $jpg;
+        } elseif (file_exists($jpeg)) {
+            $path = $jpeg;
+        } else {
+            $path = APP . 'Files' . DS . 'profilethumb' . DS . 'profilethumb.png';
+        }
+
+        $response = $this->response->withFile($path);
+
+        return $response;
+    }
 
     public function problemswithlogin()
     {
@@ -240,7 +240,7 @@ public function avatar()
 
                     $this->Flash->success(__('Пароль успешно отправлен'));
                 } else {
-                    $this->Flash->error(__('Email : '.$this->request->getData('email').' не зарегистрирован'));
+                    $this->Flash->error(__('Email : ' . $this->request->getData('email') . ' не зарегистрирован'));
                 }
             }
         }
