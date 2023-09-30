@@ -31,7 +31,26 @@ class NewsController extends AppController
 
         $news = $this->News->find('all', [
             'conditions' => ['News.news_status_id' => '1'],
-            'contain' => ['NewsStatuses', 'Languages']
+            'contain' => ['NewsStatuses', 'Languages'],
+            'order' => ['created' => 'DESC']
+        ]);
+
+        $this->set(compact('news'));
+    }
+
+    /**
+     * View method
+     *
+     * @param string|null $id Item id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+
+        $news = $this->News->get($id, [
+            'contain' => ['NewsStatuses', 'Languages'],
         ]);
 
         $this->set(compact('news'));

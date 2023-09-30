@@ -6,7 +6,7 @@ use Cake\Controller\Component;
 
 class RandomComponent extends Component
 {
-    public function generateCode($length = 8)
+    public function generateCode($length = 10)
     {
         // inicializa variables
         $code = "";

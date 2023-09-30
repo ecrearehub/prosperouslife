@@ -83,12 +83,12 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'host' => 'localhost',
-            'port' => 25,
-            'username' => null,
-            'password' => null,
-            'client' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+            'host' => 'smtp.1und1.de',
+            'port' => 587,
+            'username' => 'smtp@prosperouslife.club',
+            'password' => 'xHZ5arPu75#',
+            'className' => 'Smtp',
+            'tls' => true
         ],
     ],
 ];

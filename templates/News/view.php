@@ -27,20 +27,18 @@
     <div class="tabs-animation">
         <div class="row">
             <div class="col-sm-12 col-lg-8">
-                <?php foreach ($news as $news) { ?>
-                    <div class="mb-3 card">
-                        <div class="card-header-tab card-header">
-                            <div class="card-header-title font-size-lg text-capitalize fw-normal">
-                                <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
-                                <?php echo date_format($news->created, "d.m.Y"); ?>
-                                <?php echo $news->subject; ?>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <?php echo $news->message; ?>
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize fw-normal">
+                            <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
+                            <?php echo date_format($news->created, "d.m.Y"); ?>
+                            <?php echo $news->subject; ?>
                         </div>
                     </div>
-                <?php } ?>
+                    <div class="card-body">
+                        <?php echo $news->message; ?>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-12 col-lg-4">
                 <div class="card-hover-shadow-2x mb-3 card">

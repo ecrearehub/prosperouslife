@@ -15,26 +15,18 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class UsersController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('Random');
+        $this->loadComponent('Post');
+    }
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
 
         $this->Authentication->allowUnauthenticated(['login', 'problemswithlogin', 'forgotpassword']);
-    }
-
-    /**
-     * Index method.
-     *
-     * @return \Cake\Http\Response|void|null Renders view
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['ParentUsers', 'UserRoles', 'UserStatuses', 'Countries'],
-        ];
-        $users = $this->paginate($this->Users);
-
-        $this->set(compact('users'));
     }
 
     /**
@@ -53,33 +45,6 @@ class UsersController extends AppController
         ]);
 
         $this->set(compact('user'));
-    }
-
-    /**
-     * Add method.
-     *
-     * @return \Cake\Http\Response|void|null redirects on successful add, renders view otherwise
-     */
-    public function add()
-    {
-        $user = $this->Users->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
-        }
-        $parentUsers = $this->Users->ParentUsers->find('list', ['limit' => 200])->all();
-        $userRoles = $this->Users->UserRoles->find('list', ['limit' => 200])->all();
-        $userStatuses = $this->Users->UserStatuses->find('list', ['limit' => 200])->all();
-        $countries = $this->Users->Countries->find('list', ['limit' => 200])->all();
-        $goals = $this->Users->Goals->find('list', ['limit' => 200])->all();
-        $languages = $this->Users->Languages->find('list', ['limit' => 200])->all();
-        $trees = $this->Users->Trees->find('list', ['limit' => 200])->all();
-        $this->set(compact('user', 'parentUsers', 'userRoles', 'userStatuses', 'countries', 'goals', 'languages', 'trees'));
     }
 
     /**
@@ -115,28 +80,6 @@ class UsersController extends AppController
         $this->set(compact('user', 'parentUsers', 'userRoles', 'userStatuses', 'countries', 'goals', 'languages', 'trees'));
     }
 
-    /**
-     * Delete method.
-     *
-     * @param string|null $id user id
-     *
-     * @return \Cake\Http\Response|void|null redirects to index
-     *
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException when record not found
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
-    }
-
     public function login()
     {
         // debug((new DefaultPasswordHasher())->hash('ludajed'));
@@ -145,7 +88,7 @@ class UsersController extends AppController
 
         $result = $this->Authentication->getResult();
 
-        // debug($result);
+        //debug($result);
 
         if ($result->isValid()) {
             $target = $this->Authentication->getLoginRedirect();
@@ -170,8 +113,15 @@ class UsersController extends AppController
     public function dashboard()
     {
         $this->viewBuilder()->setLayout('dashboard');
+
         $user = $this->Authentication->getIdentity();
-        $this->set(compact('user'));
+
+        $news = $this->getTableLocator()->get('News')->find('all')
+            ->where(['News.news_status_id' => '1'])
+            ->order(['created' => 'DESC'])
+            ->first();
+
+        $this->set(compact('user', 'news'));
     }
 
     public function avatar()
