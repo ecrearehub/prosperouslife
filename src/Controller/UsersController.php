@@ -116,7 +116,8 @@ class UsersController extends AppController
 
         $user = $this->Authentication->getIdentity();
 
-        $news = $this->getTableLocator()->get('News')->find('all')
+        $news = $this->getTableLocator()->get('News')
+            ->find()
             ->where(['News.news_status_id' => '1'])
             ->order(['created' => 'DESC'])
             ->first();

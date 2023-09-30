@@ -29,11 +29,11 @@ class NewsController extends AppController
     {
         $this->viewBuilder()->setLayout('dashboard');
 
-        $news = $this->News->find('all', [
-            'conditions' => ['News.news_status_id' => '1'],
-            'contain' => ['NewsStatuses', 'Languages'],
-            'order' => ['created' => 'DESC']
-        ]);
+        $news = $this->News->find()
+            ->where(['News.news_status_id' => '1'])
+            ->contain(['NewsStatuses', 'Languages'])
+            ->order(['created' => 'DESC'])
+            ->all();
 
         $this->set(compact('news'));
     }

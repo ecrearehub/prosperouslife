@@ -39,7 +39,7 @@
                     <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-home"></i> Главная', '/users/dashboard/', ['class' => 'mm-active', 'escape' => false]); ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-display2"></i> Презентации', '/Conferences/index/', ['class' => '', 'escape' => false]); ?>
+                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-display2"></i> Презентации', '/conferences/index/', ['class' => '', 'escape' => false]); ?>
                 </li>
                 <li>
                     <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-news-paper"></i> Новости', '/news/index/', ['class' => '', 'escape' => false]); ?>

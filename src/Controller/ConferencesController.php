@@ -18,12 +18,35 @@ class ConferencesController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->setLayout('dashboard');
+
         $this->paginate = [
-            'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses'],
+            //'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses'],
         ];
         $conferences = $this->paginate($this->Conferences);
 
         $this->set(compact('conferences'));
+    }
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function webinars()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+
+        $this->paginate = [
+            'conditions' => ['Conferences.conference_type_id' => '2'],
+            'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses']
+        ];
+        $conferences = $this->paginate($this->Conferences, ['limit' => '10']);
+
+        $this->set(compact('conferences'));
+
+        //Statistics
+        $this->set('statistics', $this->Conferences->getStatistics('1'));
     }
 
     /**

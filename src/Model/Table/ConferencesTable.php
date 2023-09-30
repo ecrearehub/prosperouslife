@@ -125,4 +125,32 @@ class ConferencesTable extends Table
 
         return $rules;
     }
+
+    public function getStatistics($type = null)
+    {
+
+        switch ($type) {
+            case 1:
+
+                $number_of_conferences = 1;
+                $number_of_views = 2;
+
+                break;
+            case 2:
+
+
+                break;
+
+            case 3:
+
+                break;
+        }
+
+        $statistics = [
+            'number_of_conferences' => $number_of_conferences,
+            'number_of_views' => $number_of_views,
+        ];
+
+        return $statistics;
+    }
 }
