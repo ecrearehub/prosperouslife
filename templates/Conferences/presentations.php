@@ -24,7 +24,7 @@
                                     <a>Презентации</a>
                                 </li>
                                 <li class="active breadcrumb-item" aria-current="page">
-                                    Расписание вебинаров
+                                    Расписание презентаций
                                 </li>
                             </ol>
                         </nav>
@@ -44,7 +44,7 @@
                     <div class="card-header-tab card-header">
                         <div class="card-header-title font-size-lg text-capitalize fw-normal">
                             <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
-                            Расписание вебинаров
+                            Расписание презентаций
                         </div>
                     </div>
                     <div class="card-body">

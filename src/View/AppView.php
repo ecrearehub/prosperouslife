@@ -41,5 +41,6 @@ class AppView extends View
     {
         $this->loadHelper('Authentication.Identity');
         $this->loadHelper('Paginator', ['templates' => 'paginator-templates']);
+        $this->loadHelper('Link');
     }
 }

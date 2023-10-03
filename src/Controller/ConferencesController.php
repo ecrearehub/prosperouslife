@@ -11,31 +11,12 @@ namespace App\Controller;
  */
 class ConferencesController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function index()
-    {
-        $this->viewBuilder()->setLayout('dashboard');
-
-        $this->paginate = [
-            //'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses'],
-        ];
-        $conferences = $this->paginate($this->Conferences);
-
-        $this->set(compact('conferences'));
-    }
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
     public function webinars()
     {
         $this->viewBuilder()->setLayout('dashboard');
+
+        //Statistics
+        $statistics = $this->Conferences->getStatistics('2');
 
         $this->paginate = [
             'conditions' => ['Conferences.conference_type_id' => '2'],
@@ -43,97 +24,38 @@ class ConferencesController extends AppController
         ];
         $conferences = $this->paginate($this->Conferences, ['limit' => '10']);
 
-        $this->set(compact('conferences'));
+        $this->set(compact('conferences', 'statistics'));
+    }
+
+    public function presentations()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
 
         //Statistics
-        $this->set('statistics', $this->Conferences->getStatistics('1'));
+        $statistics = $this->Conferences->getStatistics('3');
+
+        $this->paginate = [
+            'conditions' => ['Conferences.conference_type_id' => '3'],
+            'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses']
+        ];
+        $conferences = $this->paginate($this->Conferences, ['limit' => '10']);
+
+        $this->set(compact('conferences', 'statistics'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Conference id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
+    public function recordings()
     {
-        $conference = $this->Conferences->get($id, [
-            'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses'],
-        ]);
+        $this->viewBuilder()->setLayout('dashboard');
 
-        $this->set(compact('conference'));
-    }
+        //Statistics
+        $statistics = $this->Conferences->getStatistics('1');
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $conference = $this->Conferences->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $conference = $this->Conferences->patchEntity($conference, $this->request->getData());
-            if ($this->Conferences->save($conference)) {
-                $this->Flash->success(__('The conference has been saved.'));
+        $this->paginate = [
+            'conditions' => ['Conferences.conference_type_id' => '1'],
+            'contain' => ['Languages', 'ConferenceTimezones', 'ConferenceTypes', 'ConferenceStatuses']
+        ];
+        $conferences = $this->paginate($this->Conferences, ['limit' => '10']);
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The conference could not be saved. Please, try again.'));
-        }
-        $languages = $this->Conferences->Languages->find('list', ['limit' => 200])->all();
-        $conferenceTimezones = $this->Conferences->ConferenceTimezones->find('list', ['limit' => 200])->all();
-        $conferenceTypes = $this->Conferences->ConferenceTypes->find('list', ['limit' => 200])->all();
-        $conferenceStatuses = $this->Conferences->ConferenceStatuses->find('list', ['limit' => 200])->all();
-        $this->set(compact('conference', 'languages', 'conferenceTimezones', 'conferenceTypes', 'conferenceStatuses'));
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Conference id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $conference = $this->Conferences->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $conference = $this->Conferences->patchEntity($conference, $this->request->getData());
-            if ($this->Conferences->save($conference)) {
-                $this->Flash->success(__('The conference has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The conference could not be saved. Please, try again.'));
-        }
-        $languages = $this->Conferences->Languages->find('list', ['limit' => 200])->all();
-        $conferenceTimezones = $this->Conferences->ConferenceTimezones->find('list', ['limit' => 200])->all();
-        $conferenceTypes = $this->Conferences->ConferenceTypes->find('list', ['limit' => 200])->all();
-        $conferenceStatuses = $this->Conferences->ConferenceStatuses->find('list', ['limit' => 200])->all();
-        $this->set(compact('conference', 'languages', 'conferenceTimezones', 'conferenceTypes', 'conferenceStatuses'));
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Conference id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $conference = $this->Conferences->get($id);
-        if ($this->Conferences->delete($conference)) {
-            $this->Flash->success(__('The conference has been deleted.'));
-        } else {
-            $this->Flash->error(__('The conference could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
+        $this->set(compact('conferences', 'statistics'));
     }
 }

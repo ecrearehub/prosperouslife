@@ -36,37 +36,59 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading"></li>
                 <li>
-                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-home"></i> Главная', '/users/dashboard/', ['class' => 'mm-active', 'escape' => false]); ?>
+                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-home"></i> Главная', '/users/dashboard/', ['class' => $this->Link->getStyle('dashboard', $this->request->getAttribute('params')), 'escape' => false]); ?>
                 </li>
-                <li>
-                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-display2"></i> Презентации', '/conferences/index/', ['class' => '', 'escape' => false]); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-news-paper"></i> Новости', '/news/index/', ['class' => '', 'escape' => false]); ?>
-                </li>
-                <li class="app-sidebar__heading">Do Action</li>
-                <li class="mm-active">
+                <li class=<?= $this->Link->getStyle('conferences', $this->request->getAttribute('params')); ?>>
                     <a href="#">
-                        <i class="metismenu-icon pe-7s-leaf"></i>
-                        Leave a Legacy
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Презентации
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
                         <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> My Legacy', '/donations/', ['class' => '', 'escape' => false]); ?>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Расписание вебинаров', '/conferences/webinars/', ['class' => $this->Link->getStyle('webinars', $this->request->getAttribute('params')), 'escape' => false]); ?>
                         </li>
                         <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Projekts', '/donations/', ['class' => '', 'escape' => false]); ?>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Расписание презентаций', '/conferences/presentations/', ['class' => $this->Link->getStyle('presentations', $this->request->getAttribute('params')), 'escape' => false]); ?>
                         </li>
                         <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> My Trees', '/donations/', ['class' => '', 'escape' => false]); ?>
-                        </li>
-                        <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Sponsor a Tree', '/donations/', ['class' => '', 'escape' => false]); ?>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Записи', '/conferences/recordings/', ['class' => $this->Link->getStyle('recordings', $this->request->getAttribute('params')), 'escape' => false]); ?>
                         </li>
                     </ul>
                 </li>
                 <li>
+                    <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-news-paper"></i> Новости', '/news/index/', ['class' => $this->Link->getStyle('news', $this->request->getAttribute('params')), 'escape' => false]); ?>
+                </li>
+                <li class="app-sidebar__heading">Do Action</li>
+                <?php // <li class="mm-active"> ?>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-target"></i>
+                        План действий
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> 1. Шаг', '/steps/', ['class' => '', 'escape' => false]); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> 2. Шаг', '/steps/', ['class' => '', 'escape' => false]); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> 3. Шаг', '/steps/', ['class' => '', 'escape' => false]); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> 4. Шаг', '/steps/', ['class' => '', 'escape' => false]); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> 5. Шаг', '/steps/', ['class' => '', 'escape' => false]); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> 6. Шаг', '/steps/', ['class' => '', 'escape' => false]); ?>
+                        </li>
+                    </ul>
+                </li>
+                <li class=<?= $this->Link->getStyle('team', $this->request->getAttribute('params')); ?>>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-users"></i>
                         Моя команда
@@ -74,13 +96,13 @@
                     </a>
                     <ul>
                         <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Моя команда', '/#/', ['class' => '', 'escape' => false]); ?>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Моя команда', '/users/downline/', ['class' => $this->Link->getStyle('downline', $this->request->getAttribute('params')), 'escape' => false]); ?>
                         </li>
                         <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Пригласить', '/#/', ['class' => '', 'escape' => false]); ?>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Пригласить', '/invitations/index/', ['class' => $this->Link->getStyle('invitations', $this->request->getAttribute('params')), 'escape' => false]); ?>
                         </li>
                         <li>
-                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Рекламный материал', '/#/', ['class' => '', 'escape' => false]); ?>
+                            <?php echo $this->Html->link('<i class="metismenu-icon"></i> Рекламный материал', '/pages/advertising_resources/', ['class' => $this->Link->getStyle('advertisingresources', $this->request->getAttribute('params')), 'escape' => false]); ?>
                         </li>
                     </ul>
                 </li>

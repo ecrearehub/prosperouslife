@@ -132,16 +132,57 @@ class ConferencesTable extends Table
         switch ($type) {
             case 1:
 
-                $number_of_conferences = 1;
-                $number_of_views = 2;
+                $number_of_conferences = $this->find()
+                    ->where([
+                        'conference_type_id' => 1,
+                        'conference_status_id' => 1
+                    ])
+                    ->count();
+
+                $total_of_views = $this->find()
+                    ->where([
+                        'conference_type_id' => 1,
+                        'conference_status_id' => 1
+                    ]);
+                $count_quantity_views = $total_of_views->select(['sum' => $total_of_views->func()->sum('Conferences.counter')])->first();
+                $number_of_views = $count_quantity_views->sum;
 
                 break;
             case 2:
 
+                $number_of_conferences = $this->find()
+                    ->where([
+                        'conference_type_id' => 2,
+                        'conference_status_id' => 1
+                    ])
+                    ->count();
+
+                $total_of_views = $this->find()
+                    ->where([
+                        'conference_type_id' => 2,
+                        'conference_status_id' => 1
+                    ]);
+                $count_quantity_views = $total_of_views->select(['sum' => $total_of_views->func()->sum('Conferences.counter')])->first();
+                $number_of_views = $count_quantity_views->sum;
 
                 break;
 
             case 3:
+
+                $number_of_conferences = $this->find()
+                    ->where([
+                        'conference_type_id' => 3,
+                        'conference_status_id' => 1
+                    ])
+                    ->count();
+
+                $total_of_views = $this->find()
+                    ->where([
+                        'conference_type_id' => 3,
+                        'conference_status_id' => 1
+                    ]);
+                $count_quantity_views = $total_of_views->select(['sum' => $total_of_views->func()->sum('Conferences.counter')])->first();
+                $number_of_views = $count_quantity_views->sum;
 
                 break;
         }

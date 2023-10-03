@@ -31,6 +31,15 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        $this->Authentication->allowUnauthenticated(['display']);
+    }
+
     /**
      * Displays a view
      *
@@ -69,5 +78,11 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    public function advertisingResources()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+
     }
 }
