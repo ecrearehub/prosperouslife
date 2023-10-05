@@ -1,58 +1,132 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Invitation> $invitations
+ * @var iterable<\App\Model\Entity\Conference> $conferences
  */
 ?>
-<div class="invitations index content">
-    <?= $this->Html->link(__('New Invitation'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Invitations') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
-                    <th><?= $this->Paginator->sort('first_name') ?></th>
-                    <th><?= $this->Paginator->sort('last_name') ?></th>
-                    <th><?= $this->Paginator->sort('email') ?></th>
-                    <th><?= $this->Paginator->sort('invitation_status_id') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('updated') ?></th>
-                    <th><?= $this->Paginator->sort('recall') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($invitations as $invitation): ?>
-                <tr>
-                    <td><?= $this->Number->format($invitation->id) ?></td>
-                    <td><?= $invitation->has('user') ? $this->Html->link($invitation->user->id, ['controller' => 'Users', 'action' => 'view', $invitation->user->id]) : '' ?></td>
-                    <td><?= h($invitation->first_name) ?></td>
-                    <td><?= h($invitation->last_name) ?></td>
-                    <td><?= h($invitation->email) ?></td>
-                    <td><?= $invitation->has('invitation_status') ? $this->Html->link($invitation->invitation_status->name, ['controller' => 'InvitationStatuses', 'action' => 'view', $invitation->invitation_status->id]) : '' ?></td>
-                    <td><?= h($invitation->created) ?></td>
-                    <td><?= h($invitation->updated) ?></td>
-                    <td><?= h($invitation->recall) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $invitation->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $invitation->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $invitation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invitation->id)]) ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+
+<?php //debug($invitations); ?>
+
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-display2 icon-gradient bg-mean-fruit"></i>
+                </div>
+                <div>
+                    Пригласить
+                    <div class="page-title-subheading opacity-10">
+                        <nav class="" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <?php echo $this->Html->link('<i aria-hidden="true" class="fa fa-home"></i>', '/users/dashboard/', ['escape' => false]); ?>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Моя команда</a>
+                                </li>
+                                <li class="active breadcrumb-item" aria-current="page">
+                                    Пригласить
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+
+            </div>
+        </div>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+
+    <div class="tabs-animation">
+        <div class="row">
+            <div class="col-sm-12 col-lg-8">
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header">
+                        <div class="card-header-title font-size-lg text-capitalize fw-normal">
+                            <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
+                            Обзор ваших приглашений
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div style="text-algin: left;">
+                            <button class="mb-2 me-2 btn btn-shadow btn-primary">
+                                <i class="pe-7s-add-user btn-icon-wrapper"></i>
+                                Пригласить
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table style="width: 100%;" class="table table-hover">
+                                    <thead>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1">Приглашеный</th>
+                                            <th rowspan="1" colspan="1">Email</th>
+                                            <th rowspan="1" colspan="1">Последний контакт</th>
+                                            <th rowspan="1" colspan="1">Статус</th>
+                                            <th rowspan="1" colspan="1">Напомнить</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if (count($invitations) != 0): ?>
+                                            <?php foreach ($invitations as $invitation): ?>
+                                                <tr class="odd">
+                                                    <td style="vertical-align: top;">
+                                                        <?= $invitation->first_name; ?>
+                                                        <?= $invitation->last_name; ?>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <?= $invitation->email; ?>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <?= $invitation->email; ?>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <?= $invitation->invitation_status->name; ?>
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+
+                                                        <?php if (strtotime($invitation->recall) <= time() and $invitation->invitation_status->id == 1): ?>
+                                                            <?php echo $this->Html->link('Вернуться на страницу авторизации', '/users/login/', ['class' => 'btn-lg btn btn-link']); ?>
+                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $invitation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invitation->id)]) ?>
+                                                        <?php endif ?>
+
+
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <tr class="odd">
+                                                <td colspan="5" style="vertical-align: top;">
+                                                    Вы еще никого не пригласили
+                                                </td>
+                                            </tr>
+                                        <?php endif ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1">Приглашеный</th>
+                                            <th rowspan="1" colspan="1">Email</th>
+                                            <th rowspan="1" colspan="1">Последний контакт</th>
+                                            <th rowspan="1" colspan="1">Статус</th>
+                                            <th rowspan="1" colspan="1">Напомнить</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-4">
+                <div class="card-hover-shadow-2x mb-3 card">
+                    <?php echo $this->element('support'); ?>
+                </div>
+                <div class="card-hover-shadow-2x mb-3 card">
+                    <?php echo $this->element('invitations/statistics'); ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

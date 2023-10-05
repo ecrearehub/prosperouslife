@@ -99,4 +99,17 @@ class LogsTable extends Table
 
         return $rules;
     }
+
+    public function createLog($params = null)
+    {
+
+        $data = $this->newEmptyEntity();
+        $data->user_id = $params['user_id'];
+        $data->access_ip = $_SERVER['REMOTE_ADDR'];
+        $data->controller = $params['controller'];
+        $data->action = $params['action'];
+        $data->description = $params['description'];
+
+        $this->save($data);
+    }
 }

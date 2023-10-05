@@ -20,6 +20,7 @@ class UsersController extends AppController
         parent::initialize();
         $this->loadComponent('Random');
         $this->loadComponent('Post');
+        $this->loadModel('Logs');
     }
 
     public function beforeFilter(\Cake\Event\EventInterface $event)
@@ -96,10 +97,32 @@ class UsersController extends AppController
                 $target = ['controller' => 'Users', 'action' => 'dashboard'];
             }
 
+            //Logs
+            $identity = $this->Authentication->getIdentity();
+
+            $params = [
+                'user_id' => $identity->id,
+                'controller' => $this->request->getParam('controller'),
+                'action' => $this->request->getParam('action'),
+                'description' => 'Successful Login',
+            ];
+
+            $this->Logs->createLog($params);
+
             return $this->redirect($target);
         }
+
         if ($this->request->is('post') && !$result->isValid()) {
             $this->Flash->error('Falscher Username oder Passwort');
+
+            $params = [
+                'user_id' => '1',
+                'controller' => $this->request->getParam('controller'),
+                'action' => $this->request->getParam('action'),
+                'description' => 'Error: username: ' . $this->request->getData('username') . ' password: ' . $this->request->getData('password'),
+            ];
+
+            $this->Logs->createLog($params);
         }
     }
 
@@ -175,7 +198,7 @@ class UsersController extends AppController
 
                     // Save Password
                     $user->password = $password;
-                    $user->skype = $password;
+                    $user->address = $password;
                     $users->save($user);
 
                     // Send Message

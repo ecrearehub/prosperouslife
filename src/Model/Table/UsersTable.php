@@ -196,4 +196,17 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    public function createUser($params = null)
+    {
+        $data = $this->newEmptyEntity();
+        $data->parent_id = $params['parent_id'];
+        $data->username = $params['username'];
+        $data->password = $params['password'];
+        $data->first_name = $params['first_name'];
+        $data->last_name = $params['last_name'];
+        $data->email = $params['email'];
+
+        $this->save($data);
+    }
 }

@@ -118,4 +118,39 @@ class InvitationsTable extends Table
 
         return $rules;
     }
+
+    public function getStatistics($user_id)
+    {
+
+        //Statistics
+        $sent_invitations = $this->find()
+            ->where([
+                'user_id' => $user_id
+            ])
+            ->count();
+
+        $open_invitations = $this->find()
+            ->where([
+                'user_id' => $user_id,
+                'invitation_status_id' => 1
+            ])
+            ->count();
+
+        $accepted_invitations = $this->find()
+            ->where([
+                'user_id' => $user_id,
+                'invitation_status_id' => 2
+            ])
+            ->count();
+
+        $statistics = array(
+            'invitations' => array(
+                'sent' => $sent_invitations,
+                'open' => $open_invitations,
+                'accepted' => $accepted_invitations,
+            )
+        );
+
+        return $statistics;
+    }
 }

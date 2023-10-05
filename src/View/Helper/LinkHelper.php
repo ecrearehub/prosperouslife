@@ -40,7 +40,9 @@ class LinkHelper extends Helper
                 break;
             case 'team':
                 $pages = array(
-                    'PagesadvertisingResources'
+                    'PagesadvertisingResources',
+                    'Invitationsindex',
+                    'invitationsadd',
                 );
                 break;
             case 'downline':
@@ -51,8 +53,8 @@ class LinkHelper extends Helper
                 break;
             case 'invitations':
                 $pages = array(
-                    'Newsindex',
-                    'Newsview',
+                    'Invitationsindex',
+                    'invitationsadd',
                 );
                 break;
             case 'advertisingresources':
