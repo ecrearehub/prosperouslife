@@ -2,59 +2,46 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
- * @var \Cake\Collection\CollectionInterface|string[] $parentUsers
- * @var \Cake\Collection\CollectionInterface|string[] $userRoles
- * @var \Cake\Collection\CollectionInterface|string[] $userStatuses
- * @var \Cake\Collection\CollectionInterface|string[] $countries
- * @var \Cake\Collection\CollectionInterface|string[] $goals
- * @var \Cake\Collection\CollectionInterface|string[] $languages
- * @var \Cake\Collection\CollectionInterface|string[] $trees
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Add User') ?></legend>
-                <?php
-                    echo $this->Form->control('parent_id', ['options' => $parentUsers, 'empty' => true]);
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('first_name');
-                    echo $this->Form->control('last_name');
-                    echo $this->Form->control('birthday');
-                    echo $this->Form->control('user_role_id', ['options' => $userRoles, 'empty' => true]);
-                    echo $this->Form->control('user_status_id', ['options' => $userStatuses, 'empty' => true]);
-                    echo $this->Form->control('skype');
-                    echo $this->Form->control('phone');
-                    echo $this->Form->control('mobile');
-                    echo $this->Form->control('address');
-                    echo $this->Form->control('zip');
-                    echo $this->Form->control('city');
-                    echo $this->Form->control('country_id', ['options' => $countries, 'empty' => true]);
-                    echo $this->Form->control('code');
-                    echo $this->Form->control('activation');
-                    echo $this->Form->control('terms');
-                    echo $this->Form->control('complete');
-                    echo $this->Form->control('last_login');
-                    echo $this->Form->control('newsletter');
-                    echo $this->Form->control('tax_id');
-                    echo $this->Form->control('vat_id');
-                    echo $this->Form->control('goals._ids', ['options' => $goals]);
-                    echo $this->Form->control('languages._ids', ['options' => $languages]);
-                    echo $this->Form->control('trees._ids', ['options' => $trees]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+
+<div class="app-container app-theme-white body-tabs-shadow">
+    <div class="app-container">
+        <div class="h-100">
+            <div class="h-100 g-0 row">
+                <div class="d-none d-lg-block col-lg-4">
+                    <?php echo $this->element('login/slider'); ?>
+                </div>
+                <div class="h-100 d-flex bg-white justify-content-center align-items-center col-md-12 col-lg-8">
+                    <div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9">
+                        <div class="app-logo"></div>
+                        <h4 class="mb-0">
+                            <span class="d-block">Спасибо за Вашу регистрацию!</span>
+                        </h4>
+                        <div class="divider row"></div>
+                        <div>
+                            <div>
+                                <strong> Что вам нужно сделать сейчас?</strong>
+
+                                <ol style="padding:15px 0px 15px 30px; margin:0;">
+                                    <li style="padding-bottom: 10px">Посмотрите в Ваш почтовый ящик: там должно быть
+                                        сообщение "Ваша регистрация". (Если нет, посмотрите в папку со спамом.)</li>
+                                    <li>Откройте сообщение и нажмите на ссылку для подтверждения.</li>
+                                </ol>
+
+                                <p>В случае проблем пожалуйста, напишите нам на: <a
+                                        href="mailto:support@prosperouslife.club">support@prosperouslife.club</a>.</p>
+                            </div>
+                        </div>
+                        <div class="divider row"></div>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-auto">
+                                <?php echo $this->Html->link('Вернуться на страницу авторизации', '/users/login/', ['class' => 'btn btn-primary btn-lg']); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -206,7 +206,15 @@ class UsersTable extends Table
         $data->first_name = $params['first_name'];
         $data->last_name = $params['last_name'];
         $data->email = $params['email'];
+        $data->code = $params['code'];
 
-        $this->save($data);
+        if ($this->save($data)) {
+            return $data->id;
+        }
+    }
+
+    public function getLastInsertId()
+    {
+
     }
 }

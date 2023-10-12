@@ -1,11 +1,9 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Conference> $conferences
+ * @var iterable<\App\Model\Entity\Invitation> $invitations
  */
 ?>
-
-<?php //debug($invitations); ?>
 
 <div class="app-main__inner">
     <div class="app-page-title">
@@ -51,11 +49,11 @@
                     </div>
                     <div class="card-body">
                         <div style="text-algin: left;">
-                            <button class="mb-2 me-2 btn btn-shadow btn-primary">
-                                <i class="pe-7s-add-user btn-icon-wrapper"></i>
-                                Пригласить
-                            </button>
+                            <?php echo $this->Html->link('<i class="pe-7s-add-user btn-icon-wrapper"></i> Пригласить', '/invitations/add/', ['class' => 'mb-2 me-2 btn btn-shadow btn-primary', 'escape' => false]); ?>
                         </div>
+
+                        <?= $this->Flash->render() ?>
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <table style="width: 100%;" class="table table-hover">
@@ -80,19 +78,16 @@
                                                         <?= $invitation->email; ?>
                                                     </td>
                                                     <td style="vertical-align: top;">
-                                                        <?= $invitation->email; ?>
+                                                        <?= date_format($invitation->modified, "d.m.Y"); ?>
                                                     </td>
                                                     <td style="vertical-align: top;">
                                                         <?= $invitation->invitation_status->name; ?>
                                                     </td>
                                                     <td style="vertical-align: top;">
-
                                                         <?php if (strtotime($invitation->recall) <= time() and $invitation->invitation_status->id == 1): ?>
-                                                            <?php echo $this->Html->link('Вернуться на страницу авторизации', '/users/login/', ['class' => 'btn-lg btn btn-link']); ?>
-                                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $invitation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invitation->id)]) ?>
+                                                            <?= $this->Html->link('<i class="lnr-envelope"></i>', '/invitations/recall/' . $invitation->id, ['class' => 'mb-2 me-2 btn-icon btn btn-info', 'escape' => false, 'data-bs-toggle' => 'tooltip', 'data-bs-placement' => 'top', 'title data-bs-original-title' => 'Отправить напоминание']); ?>
+                                                            <?php //$this->Form->postLink('<i class="pe-7s-trash btn-icon-wrapper"></i>', ['action' => 'delete', $invitation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $invitation->id), 'class' => 'mb-2 me-2 btn-icon btn-icon-only btn btn-danger', 'escape' => false, 'data-bs-toggle' => 'tooltip', 'data-bs-placement' => 'top', 'title data-bs-original-title' => 'Приглашение удалить']) ?>
                                                         <?php endif ?>
-
-
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

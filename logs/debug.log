@@ -541,3 +541,87 @@ Cake\Http\Runner::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src
 Cake\Http\Server::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Server.php, line 90
 [main] C:\laragon\www\prosperouslife\webroot\index.php, line 40
 
+2023-10-10 15:10:37 notice: 4.4.12 - Having queryString set on exceptions is deprecated.If you are not using this attribute there is no action to take.Otherwise, enable Error.convertStatementToDatabaseException.
+C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line: 360
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/cakephp/src/Database/Connection.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /invitations/add/
+Referer URL: http://prosperouslife.test/invitations/add/
+Client IP: 127.0.0.1
+Trace:
+deprecationWarning C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Core\functions.php, line 328
+Cake\Database\Log\LoggingStatement::execute() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php, line 99
+Cake\Database\Connection::Cake\Database\{closure}() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line 360
+Cake\Core\Retry\CommandRetry::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php, line 70
+Cake\Database\Connection::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line 363
+Cake\Database\Query::execute() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Query.php, line 255
+Cake\ORM\Table::_insert() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 2077
+Cake\ORM\Table::_processSave() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1970
+Cake\ORM\Table::Cake\ORM\{closure}() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1869
+Cake\ORM\Table::Cake\ORM\{closure}() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1556
+Cake\Database\Connection::transactional() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line 709
+Cake\ORM\Table::_executeTransaction() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1557
+Cake\ORM\Table::save() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1870
+App\Controller\InvitationsController::add() C:\laragon\www\prosperouslife\src\Controller\InvitationsController.php, line 52
+Cake\Controller\Controller::invokeAction() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Controller\Controller.php, line 547
+Cake\Controller\ControllerFactory::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 139
+Cake\Controller\ControllerFactory::invoke() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 114
+Cake\Http\BaseApplication::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 320
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Authentication\Middleware\AuthenticationMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 124
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Middleware\BodyParserMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 162
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Routing\Middleware\RoutingMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 186
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Routing\Middleware\AssetMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Error\Middleware\ErrorHandlerMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 131
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+DebugKit\Middleware\DebugKitMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Server::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Server.php, line 90
+[main] C:\laragon\www\prosperouslife\webroot\index.php, line 40
+
+2023-10-11 13:47:33 notice: 4.4.12 - Having queryString set on exceptions is deprecated.If you are not using this attribute there is no action to take.Otherwise, enable Error.convertStatementToDatabaseException.
+C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line: 360
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/cakephp/src/Database/Connection.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /invitations/add/
+Referer URL: http://prosperouslife.test/invitations/add/
+Client IP: 127.0.0.1
+Trace:
+deprecationWarning C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Core\functions.php, line 328
+Cake\Database\Log\LoggingStatement::execute() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php, line 99
+Cake\Database\Connection::Cake\Database\{closure}() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line 360
+Cake\Core\Retry\CommandRetry::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php, line 70
+Cake\Database\Connection::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line 363
+Cake\Database\Query::execute() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Query.php, line 255
+Cake\ORM\Table::_insert() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 2077
+Cake\ORM\Table::_processSave() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1970
+Cake\ORM\Table::Cake\ORM\{closure}() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1869
+Cake\ORM\Table::Cake\ORM\{closure}() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1556
+Cake\Database\Connection::transactional() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php, line 709
+Cake\ORM\Table::_executeTransaction() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1557
+Cake\ORM\Table::save() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php, line 1870
+App\Controller\InvitationsController::add() C:\laragon\www\prosperouslife\src\Controller\InvitationsController.php, line 57
+Cake\Controller\Controller::invokeAction() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Controller\Controller.php, line 547
+Cake\Controller\ControllerFactory::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 139
+Cake\Controller\ControllerFactory::invoke() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 114
+Cake\Http\BaseApplication::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 320
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Authentication\Middleware\AuthenticationMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 124
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Middleware\BodyParserMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 162
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Routing\Middleware\RoutingMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 186
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Routing\Middleware\AssetMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 68
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Error\Middleware\ErrorHandlerMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 131
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+DebugKit\Middleware\DebugKitMiddleware::process() C:\laragon\www\prosperouslife\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php, line 60
+Cake\Http\Runner::handle() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Runner.php, line 67
+Cake\Http\Server::run() C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Http\Server.php, line 90
+[main] C:\laragon\www\prosperouslife\webroot\index.php, line 40
+

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Utility\Security;
+
 /**
  * Webhooks Controller
  *
@@ -62,6 +64,7 @@ class WebhooksController extends AppController
 
                     $password = $this->Random->generateCode();
                     $username = $this->Random->generateCode();
+                    $code = Security::hash($this->Random->generateCode(), 'md5', Security::randomString(20));
 
                     $userdata = [
                         'parent_id' => $request['fields']['r']['value'],
@@ -70,9 +73,10 @@ class WebhooksController extends AppController
                         'first_name' => $request['fields']['first_name']['value'],
                         'last_name' => $request['fields']['last_name']['value'],
                         'email' => $request['fields']['email']['value'],
+                        'code' => $code,
                     ];
 
-                    $this->Users->createUser($userdata);
+                    $user = $this->Users->createUser($userdata);
 
                     // Send Welcome Message
                     $message = [
@@ -81,6 +85,8 @@ class WebhooksController extends AppController
                         'last_name' => $request['fields']['last_name']['value'],
                         'username' => $username,
                         'password' => $password,
+                        'user_id' => $user,
+                        'code' => $code,
                     ];
 
                     $this->Post->sendWelcomeMessage($message);

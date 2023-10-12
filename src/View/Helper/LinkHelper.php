@@ -42,7 +42,7 @@ class LinkHelper extends Helper
                 $pages = array(
                     'PagesadvertisingResources',
                     'Invitationsindex',
-                    'invitationsadd',
+                    'Invitationsadd',
                 );
                 break;
             case 'downline':
@@ -54,7 +54,7 @@ class LinkHelper extends Helper
             case 'invitations':
                 $pages = array(
                     'Invitationsindex',
-                    'invitationsadd',
+                    'Invitationsadd',
                 );
                 break;
             case 'advertisingresources':

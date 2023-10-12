@@ -65,40 +65,27 @@ class InvitationsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('user_id')
-            ->allowEmptyString('user_id');
-
-        $validator
             ->scalar('first_name')
             ->maxLength('first_name', 45)
-            ->allowEmptyString('first_name');
+            ->notEmptyString('first_name', 'Заполните обязательное поле');
 
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 45)
-            ->allowEmptyString('last_name');
+            ->notEmptyString('last_name', 'Заполните обязательное поле');
 
         $validator
             ->email('email')
-            ->allowEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->notEmptyString('email', 'Заполните обязательное поле')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'message' => 'Email уже существует', 'provider' => 'table']);
 
         $validator
             ->scalar('subject')
-            ->allowEmptyString('subject');
+            ->notEmptyString('subject', 'Заполните обязательное поле');
 
         $validator
             ->scalar('message')
-            ->allowEmptyString('message');
-
-        $validator
-            ->integer('invitation_status_id')
-            ->allowEmptyString('invitation_status_id');
-
-        $validator
-            ->scalar('recall')
-            ->maxLength('recall', 45)
-            ->allowEmptyString('recall');
+            ->notEmptyString('message', 'Заполните обязательное поле');
 
         return $validator;
     }
@@ -117,6 +104,24 @@ class InvitationsTable extends Table
         $rules->add($rules->existsIn('invitation_status_id', 'InvitationStatuses'), ['errorField' => 'invitation_status_id']);
 
         return $rules;
+    }
+
+    public function createInvitation($params = null)
+    {
+
+        $data = $this->newEmptyEntity();
+        $data->user_id = $params['user_id'];
+        $data->first_name = $params['first_name'];
+        $data->last_name = $params['last_name'];
+        $data->email = $params['email'];
+        $data->subject = $params['subject'];
+        $data->message = $params['message'];
+        $data->recall = mktime(0, 0, 0, (int) date('m'), (int) date('d') + 14, (int) date('Y'));
+
+        if ($this->save($data)) {
+            return true;
+        }
+        return false;
     }
 
     public function getStatistics($user_id)

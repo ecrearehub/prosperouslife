@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Auth\DefaultPasswordHasher;
+use Cake\Utility\Security;
 
 /**
  * Users Controller.
@@ -27,26 +28,9 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
-        $this->Authentication->allowUnauthenticated(['login', 'problemswithlogin', 'forgotpassword']);
+        $this->Authentication->allowUnauthenticated(['login', 'problemswithlogin', 'forgotpassword', 'add', 'activate']);
     }
 
-    /**
-     * View method.
-     *
-     * @param string|null $id user id
-     *
-     * @return \Cake\Http\Response|void|null Renders view
-     *
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException when record not found
-     */
-    public function view($id = null)
-    {
-        $user = $this->Users->get($id, [
-            'contain' => ['ParentUsers', 'UserRoles', 'UserStatuses', 'Countries', 'Goals', 'Languages', 'Trees', 'Accounts', 'Donations', 'Favorites', 'Invitations', 'Logs', 'Notes', 'Orders', 'Projects', 'Sales', 'Transactions', 'UserPrivacySettings', 'UserSkills', 'ChildUsers'],
-        ]);
-
-        $this->set(compact('user'));
-    }
 
     /**
      * Edit method.
@@ -218,5 +202,28 @@ class UsersController extends AppController
                 }
             }
         }
+    }
+
+    public function profile()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+
+    }
+
+    public function add()
+    {
+        $this->viewBuilder()->setLayout('login');
+
+    }
+
+    public function activate($code = null)
+    {
+        $this->viewBuilder()->setLayout('login');
+
+        if (isset($code)) {
+        } else {
+            $this->Flash->error(__('Aккаунт не найден.'));
+        }
+
     }
 }

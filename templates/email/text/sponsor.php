@@ -1,14 +1,12 @@
-Уважаемый(ая),
-<?php echo $sponsor_first_name ?>
-<?php echo $sponsor_last_name ?>
+<?php echo 'Уважаемый(ая), ', $referral_first_name . ' ' . $referral_last_name ?>
 
 Мы Вас поздравляем!
 
 Новый партнер зарегистрировался на Вашей NetTaller странице.
 
 Партнер:
-<?php echo $first_name ?>
-<?php echo $last_name ?>
+<?php echo $first_name . ' ' . $last_name ?>
+
 
 Вход в кабинет по ссылке:
 https://prosperouslife.club/
@@ -16,7 +14,7 @@ https://prosperouslife.club/
 Проблемы входa на сайт?
 https://my.prosperouslife.club/users/problemswithlogin/
 
-Если у Вас есть еще вопросы, пишите нам e-mail на support@nettaller.club
+Если у Вас есть еще вопросы, пишите нам e-mail на support@prosperouslife.club
 или обратитесь к Вашему спонсору.
 
 Мы желаем Вам больших успехов

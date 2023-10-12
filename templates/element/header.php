@@ -49,7 +49,7 @@
                                     <div class="dropdown-menu-header">
                                         <div class="dropdown-menu-header-inner bg-info">
                                             <div class="menu-header-image opacity-2"
-                                                style="background-image: url('images/dropdown-header/city3.jpg');">
+                                                style="background-image: url('<?php echo $this->Url->image('dropdown-header/city3.jpg') ?>');">
                                             </div>
                                             <div class="menu-header-content text-start">
                                                 <div class="widget-content p-0">
@@ -67,7 +67,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="widget-content-right me-2">
-                                                            <?php echo $this->Html->link('<button class="btn-pill btn-shadow btn-shine btn btn-focus">Logout</button>', '/users/logout/', ['escape' => false]); ?>
+                                                            <?php echo $this->Html->link('<button class="btn-pill btn-shadow btn-shine btn btn-focus">Выйти</button>', '/users/logout/', ['escape' => false]); ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -78,16 +78,10 @@
                                         <div class="scrollbar-container ps">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item-header nav-item">
-                                                    My Account
+                                                    Мой аккаунт
                                                 </li>
                                                 <li class="nav-item">
-                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-id"></i> <span>My Profile</span>', '/users/profile/', ['class' => 'nav-link', 'escape' => false]); ?>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-target"></i> <span>My Goals</span>', '/users/goals/', ['class' => 'nav-link', 'escape' => false]); ?>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-tools"></i> <span>My Skills</span>', '/users/skills/', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-id"></i> <span>Мой профиль</span>', '/users/profile/', ['class' => 'nav-link', 'escape' => false]); ?>
                                                 </li>
                                             </ul>
                                         </div>
