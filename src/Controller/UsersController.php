@@ -134,7 +134,7 @@ class UsersController extends AppController
 
     public function avatar()
     {
-        $identity = $this->request->getAttribute('authentication')->getIdentity();
+        $identity = $this->Authentication->getIdentity();
 
         $png = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.png';
         $jpg = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.jpg';
@@ -208,6 +208,36 @@ class UsersController extends AppController
     {
         $this->viewBuilder()->setLayout('dashboard');
 
+        $identity = $this->Authentication->getIdentity();
+
+        $user = $this->Users->get($identity->id, [
+            'contain' => ['Countries'],
+        ]);
+
+        $countries = $this->Users->Countries->find('list')->all();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            if (!$user->getErrors()) {
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The transaction has been saved.'));
+                } else {
+                    $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
+                }
+
+            } else {
+                $session = $this->getRequest()->getSession();
+                $session->write('Form.errors', $user->getErrors());
+
+                $this->Flash->error(__('Необходимые сведения отсутствуют. Пожалуйста, заполните формуляр правильно.'));
+            }
+        }
+
+        $this->set(compact('countries', 'user'));
+
     }
 
     public function add()
@@ -221,8 +251,45 @@ class UsersController extends AppController
         $this->viewBuilder()->setLayout('login');
 
         if (isset($code)) {
+
+            $massage = $this->Users->getUserByCode($code);
+
+            switch ($massage['code']) {
+                case 1:
+                    $this->Flash->error(__('Aккаунт не найден.'));
+                    break;
+                case 2:
+                    $this->Users->updateUserByCode($code);
+                    $this->Flash->success(__('Ваша аккаунт успешно активирован.'));
+                    break;
+                case 3:
+                    $this->Flash->info(__('Этoт аккаунт уже активирован.'));
+                    break;
+            }
+
         } else {
             $this->Flash->error(__('Aккаунт не найден.'));
+        }
+    }
+
+    public function downline($id = null)
+    {
+
+        $this->viewBuilder()->setLayout('dashboard');
+
+        if (isset($user_id)) {
+
+        } else {
+
+            $identity = $this->Authentication->getIdentity();
+
+            $partners = $this->Users->find()
+                ->where(['parent_id' => $identity->id])
+                ->all();
+
+            $this->set(compact('partners'));
+
+            $this->render('firstline');
         }
 
     }

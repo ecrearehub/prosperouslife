@@ -213,8 +213,60 @@ class UsersTable extends Table
         }
     }
 
-    public function getLastInsertId()
+    public function getUserByCode($code)
     {
 
+        $count = $this->find('all')
+            ->where(['code' => $code])
+            ->count();
+
+        if ($count != 0) {
+
+            $user = $this->find('all')
+                ->where(['code' => $code])
+                ->first();
+
+            if ($user->activated == 0) {
+                $message_user = $user->id;
+                $message_code = 2;
+            } else {
+                $message_user = 0;
+                $message_code = 3;
+            }
+        } else {
+            $message_user = 0;
+            $message_code = 1;
+        }
+
+        $message = array(
+            'user_id' => $message_user,
+            'code' => $message_code
+        );
+
+        return $message;
+
+        /*
+         * 1 - account not found
+         * 2 - account not activated 
+         * 3 - account activated successfully
+         */
+    }
+
+    public function updateUserByCode($code)
+    {
+
+        //Find User
+        $user = $this->find('all')
+            ->where(['code' => $code])
+            ->first();
+
+        //User update
+        $data = $this->get($user->id);
+        $data->activated = '1';
+
+        if ($this->save($data)) {
+            return true;
+        }
+        return false;
     }
 }

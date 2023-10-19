@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>LEGACY TREE :: SUSTAINABLE SOCIETY PORTAL</title>
+    <title>Live the Prosperous Life</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
@@ -70,6 +70,8 @@
     <?php echo $this->Html->script('tables'); ?>
     <?php echo $this->Html->script('carousel-slider'); ?>
     <?php echo $this->Html->script('app'); ?>
+    <!-- tawk -->
+    <?php echo $this->element('tawk-support-member'); ?>
 </body>
 
 </html>

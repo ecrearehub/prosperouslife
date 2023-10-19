@@ -13,10 +13,10 @@
                 </td>
                 <td style="padding: 10px; border: 0px;">
                     <p></p>
-                    <h5 class="card-title">STEP 1</h5>
+                    <h5 class="card-title">Шаг 1</h5>
                     <p></p>
                     <p></p>
-                    <h6>Spread the word about Legacy Tree</h6>
+                    <h6>Ситуация в финансах и мире</h6>
                     <p></p>
                     <p>
                     </p>
@@ -37,116 +37,73 @@
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; width: 30%;">
-                    <img src="/img/todo/2.jpg" alt="">
+                <td class="text-center p-4">
+                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
                 </td>
                 <td style="padding: 10px;">
                     <p></p>
-                    <h5>STEP 2</h5>
+                    <h5>ШАГ 2</h5>
                     <p></p>
                     <p></p>
-                    <h6>Participate in one of our projects as a Sponsor or Volunteer</h6>
+                    <h6>Модуль закрыт</h6>
                     <p></p>
-                    <p>
-                        For example, <strong><a href="/projects/">plant trees and support
-                                sustainable living projects</a></strong> all over the world.
-                        <strong><a href="https://forms.gle/m96QQq9wZU4bkFGr9" target="blank">Apply as a
-                                Volunteer</a></strong>.
-                    </p>
+
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; width: 30%;">
-                    <img src="/img/todo/3.jpg" alt="">
+                <td class="text-center p-4">
+                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
                 </td>
                 <td style="padding: 10px;">
                     <p></p>
-                    <h5>STEP 3</h5>
+                    <h5>ШАГ 3</h5>
                     <p></p>
                     <p></p>
-                    <h6>Join us with your own project</h6>
+                    <h6>Модуль закрыт</h6>
                     <p></p>
-                    <p>
-                    </p>
-                    <ul style="padding-left: 20px">
-                        <li>It can be an ecological or society development initiative.</li>
-                        <li>In addition to reforestation, we need to clean the oceans, transfer
-                            to green energy, educate people etc. <strong><a href="https://forms.gle/UxhoQH8yy8uFmnkM8"
-                                    target="blank">FILL OUT PROJECT APPLICATION</a></strong>
-                        </li>
-                    </ul>
-                    <p></p>
+
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; width: 30%;">
-                    <img src="/img/todo/4.jpg" alt="">
+                <td class="text-center p-4">
+                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
                 </td>
                 <td style="padding: 10px;">
                     <p></p>
-                    <h5>STEP 4</h5>
+                    <h5>ШАГ 4</h5>
                     <p></p>
                     <p></p>
-                    <h6>Participate in Shop For The World (Coming Soon)</h6>
+                    <h6>Модуль закрыт</h6>
                     <p></p>
-                    <p>
-                        By purchasing goods and services here you create funds to make our
-                        planet greener and cleaner and to build sustainable society. Part of the
-                        money will go into Unconditional Income project. Stay tuned for the
-                        updates!
-                        <br><br>
-                        In the meanwhile, feel free to <strong><a href="https://legacytree.world/fan-shop/"
-                                target="blank">grab a
-                                T-Shirt in Legacy Tree Fan Shop</a></strong>. We use these funds
-                        to plant trees.
-                    </p>
+
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; width: 30%;">
-                    <img src="/img/todo/5.jpg" alt="">
+                <td class="text-center p-4">
+                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
                 </td>
                 <td style="padding: 10px;">
                     <p></p>
-                    <h5>STEP 5</h5>
+                    <h5>ШАГ 5</h5>
                     <p></p>
                     <p></p>
-                    <h6>Become Legacy Tree Member</h6>
+                    <h6>Модуль закрыт</h6>
                     <p></p>
-                    <p>
-                        Your yearly membership contribution will be used to make our planet
-                        greener and cleaner and to create sustainable society. <strong><a
-                                href="https://donorbox.org/legacy-tree-membership" class="custom-dbox-popup">Become
-                                Legacy Tree Member</a></strong>
-                        today to create a better future!
-                    </p>
+
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px; width: 30%;">
-                    <img src="/img/todo/6.jpg" alt="">
+                <td class="text-center p-4">
+                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
                 </td>
                 <td style="padding: 10px;">
                     <p></p>
-                    <h5>ARE YOU A BUSINESS OWNER?</h5>
+                    <h5>ШАГ 6</h5>
                     <p></p>
                     <p></p>
-                    <h6>COLLABORATE WITH US!</h6>
+                    <h6>Модуль закрыт</h6>
                     <p></p>
-                    <p>
-                        Contributing to making our planet greener and cleaner positions your
-                        business in line with Sustainable Development goals. Environmentally
-                        conscious people who care about the future of humanity and our planet
-                        will be happy to become your clients.
-                        <br><br>
-                        <strong><a href="https://forms.gle/wiXuyD8TLjgCdVK37" target="blank">GET
-                                IN TOUCH</a></strong>
-                        <br><br>
-                        NOTE: <strong>We don’t cooperate with businesses that are destructive to
-                            nature, people or environment</strong>. For example, if you are
-                        selling fur of wild animals or caviar, we can’t list your business on
-                        Legacy Tree.
-                    </p>
+
                 </td>
             </tr>
         </tbody>

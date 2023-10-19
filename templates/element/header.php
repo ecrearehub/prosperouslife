@@ -74,7 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="scroll-area-xs" style="height: 150px;">
+                                    <div class="scroll-area-xs" style="height: 220px;">
                                         <div class="scrollbar-container ps">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item-header nav-item">
@@ -82,6 +82,18 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-id"></i> <span>Мой профиль</span>', '/users/profile/', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                </li>
+                                                <li class="nav-item-header nav-item">
+                                                    Помощь
+                                                </li>
+                                                <li class="nav-item">
+                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-help2"></i> <span>Служба поддержки</span>', 'javascript:void(Tawk_API.toggle())', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-study"></i> <span>Вопросы-ответы</span>', '', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-chat"></i> <span>Telegram чат</span>', '', ['class' => 'nav-link', 'escape' => false]); ?>
                                                 </li>
                                             </ul>
                                         </div>

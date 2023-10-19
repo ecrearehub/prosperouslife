@@ -43,12 +43,12 @@ class LinkHelper extends Helper
                     'PagesadvertisingResources',
                     'Invitationsindex',
                     'Invitationsadd',
+                    'Usersdownline'
                 );
                 break;
             case 'downline':
                 $pages = array(
-                    'Newsindex',
-                    'Newsview',
+                    'Usersdownline'
                 );
                 break;
             case 'invitations':
@@ -82,6 +82,27 @@ class LinkHelper extends Helper
             case 'recordings':
                 $pages = array(
                     'Conferencesrecordings'
+                );
+                break;
+            case 'steps':
+                $pages = array(
+                    'Stepsindex',
+                    'Stepsclosed'
+                );
+                break;
+            case 'open':
+                $pages = array(
+                    'Stepsindex'
+                );
+                break;
+            case 'closed':
+                $pages = array(
+                    'Stepsclosed'
+                );
+                break;
+            case 'inactive':
+                $pages = array(
+                    'Stepsinactive'
                 );
                 break;
         }

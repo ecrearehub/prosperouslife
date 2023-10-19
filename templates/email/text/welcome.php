@@ -6,7 +6,7 @@
 После подтверждения вашей регистрации, вы можете сразу же получить доступ ко всем данным.
 
 Вы можете подтведить регистрацию пройдя по ссылке:
-<?php echo 'https://www.prosperouslife.club/users/activate/' . $code ?>
+<?php echo 'https://my.prosperouslife.club/users/activate/' . $code ?>
 
 
 
