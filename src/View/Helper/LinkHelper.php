@@ -11,7 +11,11 @@ class LinkHelper extends Helper
     public function getStyle($id, $request)
     {
 
-        $path = $request['controller'] . $request['action'];
+        if (!empty($request['pass'])) {
+            $path = $request['controller'] . $request['action'] . $request['pass']['0'];
+        } else {
+            $path = $request['controller'] . $request['action'];
+        }
 
         $style = '';
 
@@ -86,23 +90,42 @@ class LinkHelper extends Helper
                 break;
             case 'steps':
                 $pages = array(
-                    'Stepsindex',
-                    'Stepsclosed'
+                    'Stepsindex1',
+                    'Stepsindex2',
+                    'Stepsindex3',
+                    'Stepsindex4',
+                    'Stepsindex5',
+                    'Stepsindex6'
                 );
                 break;
-            case 'open':
+            case '1':
                 $pages = array(
-                    'Stepsindex'
+                    'Stepsindex1'
                 );
                 break;
-            case 'closed':
+            case '2':
                 $pages = array(
-                    'Stepsclosed'
+                    'Stepsindex2'
                 );
                 break;
-            case 'inactive':
+            case '3':
                 $pages = array(
-                    'Stepsinactive'
+                    'Stepsindex3'
+                );
+                break;
+            case '4':
+                $pages = array(
+                    'Stepsindex4'
+                );
+                break;
+            case '5':
+                $pages = array(
+                    'Stepsindex5'
+                );
+                break;
+            case '6':
+                $pages = array(
+                    'Stepsindex6'
                 );
                 break;
         }

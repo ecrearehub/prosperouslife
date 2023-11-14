@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Invitation> $invitations
+ * @var iterable<\App\Model\Entity\Step> $steps
  */
 ?>
 
@@ -13,7 +13,7 @@
                     <i class="pe-7s-target icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                    1. Шаг
+                    <?= $stepId ?>. Шаг
                     <div class="page-title-subheading opacity-10">
                         <nav class="" aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -24,7 +24,7 @@
                                     <a>План действий</a>
                                 </li>
                                 <li class="active breadcrumb-item" aria-current="page">
-                                    1. Шаг
+                                    <?= $stepId ?>. Шаг
                                 </li>
                             </ol>
                         </nav>
@@ -40,11 +40,27 @@
     <div class="tabs-animation">
         <div class="row">
             <div class="col-sm-12 col-lg-8">
-                <div class="mb-3 card">
-                    <div class="card-header-tab card-header">
-                        <div class="card-header-title font-size-lg text-capitalize fw-normal">
-                            <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
-                            Ситуация в финансах и мире
+
+                <div class="main-card mb-3 card">
+                    <div class="card-header font-size-lg fw-normal" style="text-transform: none;">
+                        <i class="header-icon lnr-menu icon-gradient bg-plum-plate"></i>
+                        <?= $stepId ?>. Шаг
+                        <div class="btn-actions-pane-right actions-icon-btn">
+                            <?php if ($user->step_id == 3 and $user->step_status_id == 1): ?>
+                                <div class="">
+                                    <?= $this->Form->postLink('<button class="btn btn-primary">Отметить модуль как завершенный</button>', ['action' => 'check', $stepId], ['confirm' => 'Вы уверены, что хотите отметить модуль как завершенный?', 'escape' => false]) ?>
+                                </div>
+                            <?php endif ?>
+                            <?php if ($user->step_id == 3 and $user->step_status_id == 2): ?>
+                                <button class="btn btn-warning">
+                                    Проверяется
+                                </button>
+                            <?php endif ?>
+                            <?php if ($user->step_id >= 4): ?>
+                                <button class="btn btn-success">
+                                    Модуль успешно пройден
+                                </button>
+                            <?php endif ?>
                         </div>
                     </div>
                     <div class="card-body">
@@ -85,10 +101,6 @@
                             duis dolore te feugait nulla facilisi.
                         </p>
                     </div>
-                    <div class="d-block text-end card-footer">
-                        <button class="btn-shadow-primary btn btn-primary btn-lg">Отметить модуль как
-                            завершенный</button>
-                    </div>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-4">
@@ -96,7 +108,7 @@
                     <?= $this->element('support'); ?>
                 </div>
                 <div class="card-hover-shadow-2x mb-3 card">
-                    <?= $this->element('steps/downloads/download-step-one'); ?>
+                    <?= $this->element('steps/downloads/' . $stepId); ?>
                 </div>
             </div>
         </div>

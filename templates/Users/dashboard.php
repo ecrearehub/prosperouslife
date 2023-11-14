@@ -15,7 +15,7 @@
                     Главная
                     <?php /*
 <div class="page-title-subheading">This is an example dashboard created using build-in elements and components.</div>
-*/ ?>
+*/?>
                 </div>
             </div>
             <div class="page-title-actions">
@@ -33,17 +33,19 @@
                 <div class="mb-3 card">
                     <?php echo $this->element('dashboard/todo'); ?>
                 </div>
-                <div class="mb-3 card">
-                    <?php echo $this->element('dashboard/support'); ?>
-                </div>
             </div>
-            <div class="col-sm-12 col-lg-4">                
+            <div class="col-sm-12 col-lg-4">
                 <div class="card-hover-shadow-2x mb-3 card">
-                    <?php echo $this->element('dashboard/news'); ?>
+                    <?php echo $this->element('support'); ?>
                 </div>
-                <div class="card-hover-shadow-2x mb-3 card">
-                    <?php echo $this->element('dashboard/conferences'); ?>
-                </div>
+                <?php if ($this->Identity->get('step_id') >= 6): ?>
+                    <div class="card-hover-shadow-2x mb-3 card">
+                        <?php echo $this->element('dashboard/news'); ?>
+                    </div>
+                    <div class="card-hover-shadow-2x mb-3 card">
+                        <?php echo $this->element('dashboard/conferences'); ?>
+                    </div>
+                <?php endif ?>
             </div>
         </div>
     </div>

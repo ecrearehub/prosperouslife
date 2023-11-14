@@ -25,6 +25,7 @@ class StepsTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Steps',
+        'app.Users',
     ];
 
     /**

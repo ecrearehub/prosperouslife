@@ -29,7 +29,7 @@
                             <div class="divider row"></div>
                             <div class="d-flex align-items-center">
                                 <div class="ms-auto">
-                                    <?php echo $this->Html->link('Вернуться на страницу авторизации', '/users/login/', ['class' => 'btn-lg btn btn-link']); ?>
+                                    <?php echo $this->Html->link('Вернуться на страницу авторизации', '/', ['class' => 'btn-lg btn btn-link']); ?>
                                     <?php echo $this->Form->button('Восстановить пароль', ['class' => 'btn btn-primary btn-lg']); ?>
                                 </div>
                             </div>

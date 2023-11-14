@@ -41,7 +41,7 @@
                         <div class="widget-content-left">
                             <div class="btn-group">
                                 <a data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                    <?php echo $this->Html->image($this->Url->build(['controller' => 'Users', 'action' => 'avatar']), ['width' => '42', 'alt' => 'image', 'class' => 'rounded-circle']); ?>
+                                    <?php echo $this->Html->image($this->Url->build(['controller' => 'Users', 'action' => 'avatar/' . $this->Identity->get('id')]), ['width' => '42', 'alt' => 'image', 'class' => 'rounded-circle']); ?>
                                     <i class="fa fa-angle-down ms-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
@@ -55,7 +55,7 @@
                                                 <div class="widget-content p-0">
                                                     <div class="widget-content-wrapper">
                                                         <div class="widget-content-left me-3">
-                                                            <?php echo $this->Html->image($this->Url->build(['controller' => 'Users', 'action' => 'avatar']), ['width' => '42', 'alt' => 'image', 'class' => 'rounded-circle']); ?>
+                                                            <?php echo $this->Html->image($this->Url->build(['controller' => 'Users', 'action' => 'avatar/' . $this->Identity->get('id')]), ['width' => '42', 'alt' => 'image', 'class' => 'rounded-circle']); ?>
                                                         </div>
                                                         <div class="widget-content-left">
                                                             <div class="widget-heading">
@@ -74,7 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="scroll-area-xs" style="height: 220px;">
+                                    <div class="scroll-area-xs" style="height: 250px;">
                                         <div class="scrollbar-container ps">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item-header nav-item">
@@ -84,17 +84,29 @@
                                                     <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-id"></i> <span>Мой профиль</span>', '/users/profile/', ['class' => 'nav-link', 'escape' => false]); ?>
                                                 </li>
                                                 <li class="nav-item-header nav-item">
-                                                    Помощь
+                                                    Нужна помощь?
                                                 </li>
+                                                <?php if ($this->Identity->get('step_id') == 6 and $this->Identity->get('step_status_id') == 3): ?>
+                                                    <li class="nav-item">
+                                                        <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-user"></i> <span> Спросите спонсора</span>', '/users/downline/', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                    </li>
+                                                <?php else: ?>
+                                                    <li class="nav-item">
+                                                        <?php echo $this->Html->link('<i class="metismenu-icon pe-7s-user"></i> <span> Спросите спонсора</span>', '/users/profile/', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                    </li>
+                                                <?php endif ?>
                                                 <li class="nav-item">
-                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-help2"></i> <span>Служба поддержки</span>', 'javascript:void(Tawk_API.toggle())', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-help2"></i> <span>Спросите нас</span>', 'javascript:void(Tawk_API.toggle())', ['class' => 'nav-link', 'escape' => false]); ?>
                                                 </li>
-                                                <li class="nav-item">
-                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-study"></i> <span>Вопросы-ответы</span>', '', ['class' => 'nav-link', 'escape' => false]); ?>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-chat"></i> <span>Telegram чат</span>', '', ['class' => 'nav-link', 'escape' => false]); ?>
-                                                </li>
+
+                                                <?php if ($this->Identity->get('step_id') == 6 and $this->Identity->get('step_status_id') == 3): ?>
+                                                    <li class="nav-item">
+                                                        <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-study"></i> <span>Вопросы-ответы</span>', '', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <?php echo $this->Html->link('<i class="nav-link-icon pe-7s-chat"></i> <span>Telegram чат</span>', '', ['class' => 'nav-link', 'escape' => false]); ?>
+                                                    </li>
+                                                <?php endif ?>
                                             </ul>
                                         </div>
                                     </div>

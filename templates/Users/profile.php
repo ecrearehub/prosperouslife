@@ -5,17 +5,15 @@
  */
 ?>
 
-<?php //debug($invitations); ?>
-
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
             <div class="page-title-heading">
                 <div class="page-title-icon">
-                    <i class="pe-7s-display2 icon-gradient bg-mean-fruit"></i>
+                    <i class="pe-7s-id icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                    Пригласить
+                    Мой аккаунт
                     <div class="page-title-subheading opacity-10">
                         <nav class="" aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -23,10 +21,7 @@
                                     <?php echo $this->Html->link('<i aria-hidden="true" class="fa fa-home"></i>', '/users/dashboard/', ['escape' => false]); ?>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a>Моя команда</a>
-                                </li>
-                                <li class="active breadcrumb-item" aria-current="page">
-                                    Пригласить
+                                    <a>Мой профиль</a>
                                 </li>
                             </ol>
                         </nav>
@@ -39,24 +34,14 @@
         </div>
     </div>
 
-    <?php
-
-    if ($this->request->getSession()->read('Form.errors')) {
-        $errors = $this->request->getSession()->consume('Form.errors');
-    } else {
-        $errors = [];
-    }
-
-    ?>
-
     <div class="tabs-animation">
         <div class="row">
             <div class="col-sm-12 col-lg-8">
                 <div class="mb-3 card">
                     <div class="card-header-tab card-header">
-                        <div class="card-header-title font-size-lg text-capitalize fw-normal">
-                            <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
-                            Пригласить
+                        <div class="card-header-title font-size-lg fw-normal" style="text-transform: none;">
+                            <i class="header-icon lnr-user icon-gradient bg-happy-itmeo"></i>
+                            Мой профиль
                         </div>
                     </div>
                     <div class="card-body">
@@ -79,7 +64,11 @@
                                     <hr>
 
                                     <div class="container text-center">
-                                        <?= $this->Html->image($this->Url->build(['controller' => 'Users', 'action' => 'avatar']), ['width' => '200', 'alt' => 'image', 'class' => 'img-thumbnail rounded-circle shadow-sm']); ?>
+                                        <?= $this->Html->image($this->Url->build(['controller' => 'Users', 'action' => 'avatar/' . $this->Identity->get('id')]), ['width' => '200', 'alt' => 'image', 'class' => 'img-thumbnail rounded-circle shadow-sm']); ?>
+                                    </div>
+
+                                    <div class="container text-center mt-5">
+                                        <?= $this->Html->link('<i class="fa fa-fw" aria-hidden="true"></i>  Изменить фотографию', '/users/profilethumb/', ['escape' => false]); ?>
                                     </div>
 
                                 </div>
@@ -96,20 +85,21 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="position-relative row mb-3">
-                                                <label for="user-id" class="form-label col-sm-4 col-form-label">Партнер
-                                                    ID</label>
+                                                <label for="user-id" class="form-label col-sm-4 col-form-label">
+                                                    Партнер ID
+                                                </label>
                                                 <div class="col-sm-8">
                                                     <?= $this->Identity->get('id') ?>
                                                 </div>
                                             </div>
                                             <div class="position-relative row mb-3">
-                                                <label for="created" class="form-label col-sm-4 col-form-label">Дата
-                                                    регистрации</label>
+                                                <label for="created" class="form-label col-sm-4 col-form-label">
+                                                    Дата регистрации
+                                                </label>
                                                 <div class="col-sm-8">
                                                     <?= date_format($this->Identity->get('created'), "d.m.Y"); ?>
                                                 </div>
                                             </div>
-
                                             <div class="position-relative row mb-3">
                                                 <?php
                                                 if (count($errors)) {
@@ -122,10 +112,19 @@
                                                     $input_username_style = '';
                                                 }
                                                 ?>
-                                                <label for="username" class="form-label col-sm-4 col-form-label">Имя
-                                                    пользователя</label>
+                                                <label for="username" class="form-label col-sm-4 col-form-label">
+                                                    Имя пользователя
+                                                </label>
                                                 <div class="col-sm-8">
                                                     <?= $this->Form->control('username', ['type' => 'text', 'class' => 'form-control ' . $input_username_style, 'id' => 'username', 'autocomplete' => 'off', 'label' => false, 'required' => true]) ?>
+                                                </div>
+                                            </div>
+                                            <div class="position-relative row mb-3">
+                                                <label for="created" class="form-label col-sm-4 col-form-label">
+                                                    Пароль
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <?= $this->Html->link('<i class="fa fa-fw" aria-hidden="true"></i>  Изменить пароль', '/users/password/', ['escape' => false]); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,6 +323,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="position-relative row mb-3">
+                                                <?php
+                                                if (count($errors)) {
+                                                    if (array_key_exists('telegram', $errors)) {
+                                                        $input_telegram_style = 'is-invalid';
+                                                    } else {
+                                                        $input_telegram_style = '';
+                                                    }
+                                                } else {
+                                                    $input_telegram_style = '';
+                                                }
+                                                ?>
+                                                <label for="telegram" class="form-label col-sm-4 col-form-label">
+                                                    Telegram
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <?= $this->Form->control('telegram', ['class' => 'form-control ' . $input_telegram_style, 'id' => 'telegram', 'autocomplete' => 'off', 'label' => false, 'required' => true]) ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <h5 class="card-title mt-4">Правила использования ресурса</h5>
 
@@ -345,13 +367,14 @@
                                                 ?>
                                                 <label class="form-label form-check-label">
                                                     <?= $this->Form->checkbox('terms', ['class' => 'form-check-input ' . $input_terms_style, 'id' => 'terms', 'autocomplete' => 'off', 'label' => false, 'required' => true]) ?>
-                                                    Прочитал/а и согласен/а с правилами.
+                                                    Прочитал/а и согласен/а с
+                                                    <?= $this->Html->link('правилами', '', ['data-bs-toggle' => 'modal', 'data-bs-target' => '.bd-example-modal-lg']); ?>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <?php echo $this->Form->button('<i class="lnr-envelope"></i>  Сохранить изменения', ['class' => 'mt-4 mb-2 me-2 btn btn-shadow btn-primary', 'escapeTitle' => false]); ?>
+                                    <?php echo $this->Form->button('<i class="lnr-cog"></i>  Сохранить изменения', ['class' => 'mt-4 mb-2 me-2 btn btn-shadow btn-primary', 'escapeTitle' => false]); ?>
 
                                     <?= $this->Form->end() ?>
                                 </div>
@@ -366,6 +389,9 @@
             <div class="col-sm-12 col-lg-4">
                 <div class="card-hover-shadow-2x mb-3 card">
                     <?php echo $this->element('support'); ?>
+                </div>
+                <div class="card-hover-shadow-2x mb-3 card">
+                    <?php echo $this->element('downline/parent'); ?>
                 </div>
             </div>
         </div>

@@ -76,14 +76,22 @@ class UsersController extends AppController
         //debug($result);
 
         if ($result->isValid()) {
+
             $target = $this->Authentication->getLoginRedirect();
             if (!$target) {
                 $target = ['controller' => 'Users', 'action' => 'dashboard'];
             }
 
-            //Logs
             $identity = $this->Authentication->getIdentity();
 
+            //Last login
+            $lastlogin = date('Y-m-d H:i:s', time());
+            $user = $this->Users->get($identity->id);
+            $users = $this->getTableLocator()->get('Users');
+            $user->lastlogin = $lastlogin;
+            $users->save($user);
+
+            //Logs
             $params = [
                 'user_id' => $identity->id,
                 'controller' => $this->request->getParam('controller'),
@@ -112,6 +120,20 @@ class UsersController extends AppController
 
     public function logout()
     {
+
+        //Logs
+        $identity = $this->Authentication->getIdentity();
+
+        $params = [
+            'user_id' => $identity->id,
+            'controller' => $this->request->getParam('controller'),
+            'action' => $this->request->getParam('action'),
+            'description' => 'Successful Logout',
+        ];
+
+        $this->Logs->createLog($params);
+
+        //logout
         $this->Authentication->logout();
 
         return $this->redirect(['controller' => 'Users', 'action' => 'login']);
@@ -119,26 +141,34 @@ class UsersController extends AppController
 
     public function dashboard()
     {
+
+        $password = Security::hash('ludajed');
+        debug('<br><br><br>');
+        debug($password);
+
         $this->viewBuilder()->setLayout('dashboard');
 
         $user = $this->Authentication->getIdentity();
 
-        $news = $this->getTableLocator()->get('News')
-            ->find()
+        $news = $this->getTableLocator()->get('News')->find()
             ->where(['News.news_status_id' => '1'])
             ->order(['created' => 'DESC'])
             ->first();
 
-        $this->set(compact('user', 'news'));
+        $conferences = $this->getTableLocator()->get('Conferences')->find()
+            ->where(['conferences.conference_status_id' => '1'])
+            ->order(['created' => 'DESC'])
+            ->first();
+
+        $this->set(compact('user', 'news', 'conferences'));
     }
 
-    public function avatar()
+    public function avatar($user_id = null)
     {
-        $identity = $this->Authentication->getIdentity();
 
-        $png = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.png';
-        $jpg = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.jpg';
-        $jpeg = APP . 'Files' . DS . 'profilethumb' . DS . $identity->id . '.jpeg';
+        $png = APP . 'Files' . DS . 'profilethumb' . DS . $user_id . '.png';
+        $jpg = APP . 'Files' . DS . 'profilethumb' . DS . $user_id . '.jpg';
+        $jpeg = APP . 'Files' . DS . 'profilethumb' . DS . $user_id . '.jpeg';
 
         if (file_exists($png)) {
             $path = $png;
@@ -182,7 +212,6 @@ class UsersController extends AppController
 
                     // Save Password
                     $user->password = $password;
-                    $user->address = $password;
                     $users->save($user);
 
                     // Send Message
@@ -210,6 +239,8 @@ class UsersController extends AppController
 
         $identity = $this->Authentication->getIdentity();
 
+        $parent = $this->Users->get($identity->parent_id);
+
         $user = $this->Users->get($identity->id, [
             'contain' => ['Countries'],
         ]);
@@ -223,9 +254,23 @@ class UsersController extends AppController
             if (!$user->getErrors()) {
 
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__('The transaction has been saved.'));
+
+                    //Logs
+                    $identity = $this->Authentication->getIdentity();
+
+                    $params = [
+                        'user_id' => $identity->id,
+                        'controller' => $this->request->getParam('controller'),
+                        'action' => $this->request->getParam('action'),
+                        'description' => 'Profile changed successfully',
+                    ];
+
+                    $this->Logs->createLog($params);
+
+                    $this->Flash->success(__('Данные успешно сохранены.'));
+
                 } else {
-                    $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Необходимые сведения отсутствуют. Пожалуйста, заполните формуляр правильно.'));
                 }
 
             } else {
@@ -236,7 +281,7 @@ class UsersController extends AppController
             }
         }
 
-        $this->set(compact('countries', 'user'));
+        $this->set(compact('countries', 'user', 'parent'));
 
     }
 
@@ -283,14 +328,133 @@ class UsersController extends AppController
 
             $identity = $this->Authentication->getIdentity();
 
+            $parent = $this->Users->get($identity->parent_id);
+
             $partners = $this->Users->find()
                 ->where(['parent_id' => $identity->id])
                 ->all();
 
-            $this->set(compact('partners'));
+            $this->set(compact('parent', 'partners'));
 
             $this->render('firstline');
         }
 
+    }
+
+    public function profilethumb()
+    {
+        $this->viewBuilder()->setLayout('dashboard');
+
+        $identity = $this->Authentication->getIdentity();
+
+        if ($this->request->is('post')) {
+
+            $user = $this->Users->get($identity->id);
+
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['validate' => 'profilethumb']);
+
+            if (!$user->getErrors()) {
+
+                //Filepath
+                $filepath = APP . 'Files' . DS . 'profilethumb' . DS;
+
+                //Profilethumb delete
+                $imagetypes = array('.png', '.jpg', '.jpeg');
+
+                foreach ($imagetypes as $value) {
+
+                    if (file_exists($filepath . $identity->id . $value)) {
+                        unlink($filepath . $identity->id . $value);
+                    }
+                }
+
+                //Profilethumb update
+                $postImage = $this->request->getData('profilethumb');
+                $name = $postImage->getClientFilename();
+                $type = $postImage->getClientMediaType();
+
+                //Get Imagetype
+                foreach ($imagetypes as $value) {
+
+                    if (preg_match('/' . $value . '/', $type)) {
+                        $imagetype = $value;
+                        break;
+                    }
+                }
+
+                $targetPath = $filepath . $identity->id . $imagetype;
+
+                $postImage->moveTo($targetPath);
+
+                //Logs
+                $identity = $this->Authentication->getIdentity();
+
+                $params = [
+                    'user_id' => $identity->id,
+                    'controller' => $this->request->getParam('controller'),
+                    'action' => $this->request->getParam('action'),
+                    'description' => 'Avatar changed successfully',
+                ];
+
+                $this->Logs->createLog($params);
+
+                $this->Flash->success(__('Данные успешно сохранены'));
+                return $this->redirect(['action' => 'profile']);
+
+            } else {
+
+                $session = $this->getRequest()->getSession();
+                $session->write('Form.errors', $user->getErrors());
+
+                $this->Flash->error(__('Необходимые сведения отсутствуют. Пожалуйста, заполните формуляр правильно.'));
+            }
+        }
+    }
+
+    public function password()
+    {
+
+        $this->viewBuilder()->setLayout('dashboard');
+
+        if ($this->request->is('post')) {
+
+            $identity = $this->Authentication->getIdentity();
+            $user = $this->Users->get($identity->id);
+
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['validate' => 'password']);
+
+            if (!$user->getErrors()) {
+
+                $user = $this->Users->get($identity->id);
+                $user->password = $this->request->getData('password_password');
+
+                if ($this->Users->save($user)) {
+
+                    //Logs
+                    $identity = $this->Authentication->getIdentity();
+
+                    $params = [
+                        'user_id' => $identity->id,
+                        'controller' => $this->request->getParam('controller'),
+                        'action' => $this->request->getParam('action'),
+                        'description' => 'Password changed successfully',
+                    ];
+
+                    $this->Logs->createLog($params);
+
+                    $this->Flash->success(__('Пароль успешно изменен'));
+                } else {
+                    $this->Flash->error(__('Необходимые сведения отсутствуют. Пожалуйста, заполните формуляр правильно.'));
+                }
+
+                return $this->redirect(['action' => 'profile']);
+            } else {
+
+                $session = $this->getRequest()->getSession();
+                $session->write('Form.errors', $user->getErrors());
+
+                $this->Flash->error(__('Необходимые сведения отсутствуют. Пожалуйста, заполните формуляр правильно.'));
+            }
+        }
     }
 }

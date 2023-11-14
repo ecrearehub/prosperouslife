@@ -106,3 +106,42 @@ Cake\Console\CommandRunner::run() C:\laragon\www\legacytree\vendor\cakephp\cakep
 2023-10-13 12:59:18 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2023-10-13 13:00:02 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2023-10-13 13:15:44 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 12:21:22 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 12:21:25 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'prosperouslife.user' doesn't exist in C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 160
+Stack Trace:
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:118
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php:521
+- C:\laragon\www\prosperouslife\vendor\cakephp\bake\src\Command\ModelCommand.php:111
+- C:\laragon\www\prosperouslife\vendor\cakephp\bake\src\Command\ModelCommand.php:94
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Console\BaseCommand.php:189
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Console\CommandRunner.php:334
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\laragon\www\prosperouslife\bin\cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'prosperouslife.user' doesn't exist in C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php:39
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php:329
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Connection.php:332
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:158
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Database\Schema\Collection.php:118
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\ORM\Table.php:521
+- C:\laragon\www\prosperouslife\vendor\cakephp\bake\src\Command\ModelCommand.php:111
+- C:\laragon\www\prosperouslife\vendor\cakephp\bake\src\Command\ModelCommand.php:94
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Console\BaseCommand.php:189
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Console\CommandRunner.php:334
+- C:\laragon\www\prosperouslife\vendor\cakephp\cakephp\src\Console\CommandRunner.php:172
+- C:\laragon\www\prosperouslife\bin\cake.php:12
+
+2023-10-22 12:21:40 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 12:25:25 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 18:29:37 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 18:29:51 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 18:38:56 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 18:39:10 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 18:39:29 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 18:39:37 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 19:10:24 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 19:10:40 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-10-22 19:10:55 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.

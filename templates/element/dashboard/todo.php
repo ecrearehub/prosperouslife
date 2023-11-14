@@ -1,111 +1,182 @@
 <div class="card-header-tab card-header">
-    <div class="card-header-title font-size-lg text-capitalize fw-normal">
-        <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"></i>
-        Пошаговый план действий.
+    <div class="card-header-title font-size-lg fw-normal" style="text-transform: none;">
+        <i class="header-icon pe-7s-target icon-gradient bg-happy-itmeo"></i>
+        Пошаговый план действий
     </div>
 </div>
 <div class="p-0 card-body">
     <table style="margin: 20px;">
         <tbody>
             <tr>
-                <td style="padding: 10px; width: 30%; border: 0px;">
-                    <img src="/img/todo/1.jpg" alt="">
+                <td class="text-center p-4">
+                    <?= $this->Html->image('todo/1.jpg', ['width' => '250', 'alt' => 'Шаг 1', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
                 </td>
                 <td style="padding: 10px; border: 0px;">
-                    <p></p>
-                    <h5 class="card-title">Шаг 1</h5>
-                    <p></p>
-                    <p></p>
-                    <h6>Ситуация в финансах и мире</h6>
-                    <p></p>
-                    <p>
-                    </p>
-                    <ul style="padding-left: 20px">
-                        <li><strong><a href="https://legacytree.world/#community" target="blank">Join our Community and
-                                    follow Legacy
-                                    Tree</a></strong> on all Social Media that you are using.
-                        </li>
-                        <li><strong><a href="/invitations/">Tell your friends</a></strong>,
-                            relatives and colleagues about the project.</li>
-                        <li>Share it on Social Media and invite your friends to join us!</li>
-                        <li><strong><a href="https://legacytree.world/fan-shop/" target="blank">Wear a Legacy Tree
-                                    T-Shirt:</a></strong>
-                            available in Legacy Tree Fan Shop. P.S. We plant trees using these
-                            funds.</li>
+                    <h5 class="card-title mt-2">Шаг 1</h5>
+                    <h6 class="mt-4">Ситуация в финансах и мире</h6>
+                    <ul class="mt-3">
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Duis autem vel eum iriure dolor in hendrerit in. </li>
+                        <li>Vulputate velit esse molestie consequat. </li>
+                        <li>Vel illum dolore eu feugiat nulla facilisis</li>
                     </ul>
-                    <p></p>
+                    <?= $this->Html->link('<i class="pe-7s-study"></i>  Модуль изучить', '/steps/index/1', ['class' => 'mt-3', 'escape' => false]); ?>
                 </td>
             </tr>
-            <tr>
-                <td class="text-center p-4">
-                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
-                </td>
-                <td style="padding: 10px;">
-                    <p></p>
-                    <h5>ШАГ 2</h5>
-                    <p></p>
-                    <p></p>
-                    <h6>Модуль закрыт</h6>
-                    <p></p>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center p-4">
-                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
-                </td>
-                <td style="padding: 10px;">
-                    <p></p>
-                    <h5>ШАГ 3</h5>
-                    <p></p>
-                    <p></p>
-                    <h6>Модуль закрыт</h6>
-                    <p></p>
+            <?php if ($user->step_id >= 2): ?>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center p-4">
-                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
-                </td>
-                <td style="padding: 10px;">
-                    <p></p>
-                    <h5>ШАГ 4</h5>
-                    <p></p>
-                    <p></p>
-                    <h6>Модуль закрыт</h6>
-                    <p></p>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('todo/2.jpg', ['width' => '250', 'alt' => 'Шаг 1', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px; border: 0px;">
+                        <h5 class="card-title mt-2">Шаг 2</h5>
+                        <h6 class="mt-4">Lorem ipsum</h6>
+                        <ul class="mt-3">
+                            <li>Lorem ipsum dolor sit amet.</li>
+                            <li>Duis autem vel eum iriure dolor in hendrerit in. </li>
+                            <li>Vulputate velit esse molestie consequat. </li>
+                            <li>Vel illum dolore eu feugiat nulla facilisis</li>
+                        </ul>
+                        <?= $this->Html->link('<i class="pe-7s-study"></i>  Модуль изучить', '/steps/index/2', ['class' => 'mt-3', 'escape' => false]); ?>
+                    </td>
+                </tr>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center p-4">
-                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
-                </td>
-                <td style="padding: 10px;">
-                    <p></p>
-                    <h5>ШАГ 5</h5>
-                    <p></p>
-                    <p></p>
-                    <h6>Модуль закрыт</h6>
-                    <p></p>
+            <?php else: ?>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center p-4">
-                    <?= $this->Html->image('unlocked_1040248.png', ['width' => '200', 'alt' => 'CakePHP']); ?>
-                </td>
-                <td style="padding: 10px;">
-                    <p></p>
-                    <h5>ШАГ 6</h5>
-                    <p></p>
-                    <p></p>
-                    <h6>Модуль закрыт</h6>
-                    <p></p>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('unlocked_1040248.png', ['width' => '250', 'alt' => 'Шаг 2', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <h5 class="card-title mt-4">Шаг 2</h5>
+                        <h6 class="mt-4">Модуль закрыт</h6>
+                    </td>
+                </tr>
 
-                </td>
-            </tr>
+            <?php endif ?>
+
+
+            <?php if ($user->step_id >= 3): ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('todo/3.jpg', ['width' => '250', 'alt' => 'Шаг 1', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px; border: 0px;">
+                        <h5 class="card-title mt-2">Шаг 3</h5>
+                        <h6 class="mt-4">Lorem ipsum</h6>
+                        <ul class="mt-3">
+                            <li>Lorem ipsum dolor sit amet.</li>
+                            <li>Duis autem vel eum iriure dolor in hendrerit in. </li>
+                            <li>Vulputate velit esse molestie consequat. </li>
+                            <li>Vel illum dolore eu feugiat nulla facilisis</li>
+                        </ul>
+                        <?= $this->Html->link('<i class="pe-7s-study"></i>  Модуль изучить', '/steps/index/3', ['class' => 'mt-3', 'escape' => false]); ?>
+                    </td>
+                </tr>
+            <?php else: ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('unlocked_1040248.png', ['width' => '250', 'alt' => 'Шаг 3', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <h5 class="card-title mt-4">Шаг 3</h5>
+                        <h6 class="mt-4">Модуль закрыт</h6>
+                    </td>
+                </tr>
+            <?php endif ?>
+
+
+            <?php if ($user->step_id >= 4): ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('todo/4.jpg', ['width' => '250', 'alt' => 'Шаг 4', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px; border: 0px;">
+                        <h5 class="card-title mt-2">Шаг 4</h5>
+                        <h6 class="mt-4">Lorem ipsum</h6>
+                        <ul class="mt-3">
+                            <li>Lorem ipsum dolor sit amet.</li>
+                            <li>Duis autem vel eum iriure dolor in hendrerit in. </li>
+                            <li>Vulputate velit esse molestie consequat. </li>
+                            <li>Vel illum dolore eu feugiat nulla facilisis</li>
+                        </ul>
+                        <?= $this->Html->link('<i class="pe-7s-study"></i>  Модуль изучить', '/steps/index/4', ['class' => 'mt-3', 'escape' => false]); ?>
+                    </td>
+                </tr>
+            <?php else: ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('unlocked_1040248.png', ['width' => '250', 'alt' => 'Шаг 4', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <h5 class="card-title mt-4">Шаг 4</h5>
+                        <h6 class="mt-4">Модуль закрыт</h6>
+                    </td>
+                    </td>
+                </tr>
+            <?php endif ?>
+
+            <?php if ($user->step_id >= 5): ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('todo/5.jpg', ['width' => '250', 'alt' => 'Шаг 5', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px; border: 0px;">
+                        <h5 class="card-title mt-2">Шаг 5</h5>
+                        <h6 class="mt-4">Lorem ipsum</h6>
+                        <ul class="mt-3">
+                            <li>Lorem ipsum dolor sit amet.</li>
+                            <li>Duis autem vel eum iriure dolor in hendrerit in. </li>
+                            <li>Vulputate velit esse molestie consequat. </li>
+                            <li>Vel illum dolore eu feugiat nulla facilisis</li>
+                        </ul>
+                        <?= $this->Html->link('<i class="pe-7s-study"></i>  Модуль изучить', '/steps/index/5', ['class' => 'mt-3', 'escape' => false]); ?>
+                    </td>
+                </tr>
+            <?php else: ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('unlocked_1040248.png', ['width' => '250', 'alt' => 'Шаг 5', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <h5 class="card-title mt-4">Шаг 5</h5>
+                        <h6 class="mt-4">Модуль закрыт</h6>
+                    </td>
+                    </td>
+                </tr>
+            <?php endif ?>
+
+            <?php if ($user->step_id >= 5): ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('todo/6.jpg', ['width' => '250', 'alt' => 'Шаг 6', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px; border: 0px;">
+                        <h5 class="card-title mt-2">Шаг 6</h5>
+                        <h6 class="mt-4">Lorem ipsum</h6>
+                        <ul class="mt-3">
+                            <li>Lorem ipsum dolor sit amet.</li>
+                            <li>Duis autem vel eum iriure dolor in hendrerit in. </li>
+                            <li>Vulputate velit esse molestie consequat. </li>
+                            <li>Vel illum dolore eu feugiat nulla facilisis</li>
+                        </ul>
+                        <?= $this->Html->link('<i class="pe-7s-study"></i>  Модуль изучить', '/steps/index/6', ['class' => 'mt-3', 'escape' => false]); ?>
+                    </td>
+                </tr>
+            <?php else: ?>
+                <tr>
+                    <td class="text-center p-4">
+                        <?= $this->Html->image('unlocked_1040248.png', ['width' => '250', 'alt' => 'Шаг 6', 'class' => 'img-thumbnail rounded shadow-sm']); ?>
+                    </td>
+                    <td style="padding: 10px;">
+                        <h5 class="card-title mt-4">Шаг 6</h5>
+                        <h6 class="mt-4">Модуль закрыт</h6>
+                    </td>
+                    </td>
+                </tr>
+            <?php endif ?>
         </tbody>
     </table>
 </div>

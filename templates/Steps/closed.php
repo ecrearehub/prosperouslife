@@ -13,7 +13,7 @@
                     <i class="pe-7s-target icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                    2. Шаг
+                    <?= $stepId ?>. Шаг
                     <div class="page-title-subheading opacity-10">
                         <nav class="" aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -24,7 +24,7 @@
                                     <a>План действий</a>
                                 </li>
                                 <li class="active breadcrumb-item" aria-current="page">
-                                    2. Шаг
+                                    <?= $stepId ?>. Шаг
                                 </li>
                             </ol>
                         </nav>
@@ -42,8 +42,8 @@
             <div class="col-sm-12 col-lg-8">
                 <div class="mb-3 card">
                     <div class="card-header-tab card-header">
-                        <div class="card-header-title font-size-lg text-capitalize fw-normal">
-                            <i class="header-icon lnr-menu icon-gradient bg-happy-itmeo"></i>
+                        <div class="card-header-title font-size-lg fw-normal" style="text-transform: none;">
+                            <i class="header-icon pe-7s-lock icon-gradient bg-happy-itmeo"></i>
                             Модуль закрыт
                         </div>
                     </div>

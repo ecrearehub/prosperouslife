@@ -51,7 +51,7 @@ class WebhooksController extends AppController
             $request = json_decode($request, true);
 
             $parent = $this->Users->find()
-                ->where(['parent_id' => $request['fields']['r']['value']])
+                ->where(['id' => $request['fields']['r']['value']])
                 ->count();
 
             if ($parent != 0) {
@@ -63,7 +63,8 @@ class WebhooksController extends AppController
                 if ($email == 0) {
 
                     $password = $this->Random->generateCode();
-                    $username = $this->Random->generateCode();
+                    //$username = $this->Random->generateCode();
+                    $username = $request['fields']['email']['value'];
                     $code = Security::hash($this->Random->generateCode(), 'md5', Security::randomString(20));
 
                     $userdata = [

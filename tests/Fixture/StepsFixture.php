@@ -21,8 +21,8 @@ class StepsFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2023-10-13 13:15:46',
-                'modified' => '2023-10-13 13:15:46',
+                'created' => '2023-10-22 19:10:29',
+                'modified' => '2023-10-22 19:10:29',
             ],
         ];
         parent::init();

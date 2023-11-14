@@ -14,23 +14,28 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $ParentUsers
  * @property \App\Model\Table\UserRolesTable&\Cake\ORM\Association\BelongsTo $UserRoles
  * @property \App\Model\Table\UserStatusesTable&\Cake\ORM\Association\BelongsTo $UserStatuses
+ * @property \App\Model\Table\StepsTable&\Cake\ORM\Association\BelongsTo $Steps
+ * @property \App\Model\Table\StepStatusesTable&\Cake\ORM\Association\BelongsTo $StepStatuses
+ * @property \App\Model\Table\LanguagesTable&\Cake\ORM\Association\BelongsTo $Languages
  * @property \App\Model\Table\CountriesTable&\Cake\ORM\Association\BelongsTo $Countries
  * @property \App\Model\Table\AccountsTable&\Cake\ORM\Association\HasMany $Accounts
- * @property \App\Model\Table\DonationsTable&\Cake\ORM\Association\HasMany $Donations
- * @property \App\Model\Table\FavoritesTable&\Cake\ORM\Association\HasMany $Favorites
+ * @property \App\Model\Table\ClicksTable&\Cake\ORM\Association\HasMany $Clicks
+ * @property \App\Model\Table\DownlineTable&\Cake\ORM\Association\HasMany $Downline
  * @property \App\Model\Table\InvitationsTable&\Cake\ORM\Association\HasMany $Invitations
  * @property \App\Model\Table\LogsTable&\Cake\ORM\Association\HasMany $Logs
+ * @property \App\Model\Table\MatricesTable&\Cake\ORM\Association\HasMany $Matrices
+ * @property \App\Model\Table\MessagesTable&\Cake\ORM\Association\HasMany $Messages
  * @property \App\Model\Table\NotesTable&\Cake\ORM\Association\HasMany $Notes
+ * @property \App\Model\Table\NotificationsTable&\Cake\ORM\Association\HasMany $Notifications
  * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\HasMany $Orders
- * @property \App\Model\Table\ProjectsTable&\Cake\ORM\Association\HasMany $Projects
+ * @property \App\Model\Table\ProjectStatisticsTable&\Cake\ORM\Association\HasMany $ProjectStatistics
+ * @property \App\Model\Table\ReferralsTable&\Cake\ORM\Association\HasMany $Referrals
  * @property \App\Model\Table\SalesTable&\Cake\ORM\Association\HasMany $Sales
+ * @property \App\Model\Table\TicketsTable&\Cake\ORM\Association\HasMany $Tickets
  * @property \App\Model\Table\TransactionsTable&\Cake\ORM\Association\HasMany $Transactions
- * @property \App\Model\Table\UserPrivacySettingsTable&\Cake\ORM\Association\HasMany $UserPrivacySettings
- * @property \App\Model\Table\UserSkillsTable&\Cake\ORM\Association\HasMany $UserSkills
+ * @property \App\Model\Table\UnlocksTable&\Cake\ORM\Association\HasMany $Unlocks
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $ChildUsers
- * @property \App\Model\Table\GoalsTable&\Cake\ORM\Association\BelongsToMany $Goals
- * @property \App\Model\Table\LanguagesTable&\Cake\ORM\Association\BelongsToMany $Languages
- * @property \App\Model\Table\TreesTable&\Cake\ORM\Association\BelongsToMany $Trees
+ * @property \App\Model\Table\VerificationsTable&\Cake\ORM\Association\HasMany $Verifications
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -78,16 +83,25 @@ class UsersTable extends Table
         $this->belongsTo('UserStatuses', [
             'foreignKey' => 'user_status_id',
         ]);
+        $this->belongsTo('Steps', [
+            'foreignKey' => 'step_id',
+        ]);
+        $this->belongsTo('StepStatuses', [
+            'foreignKey' => 'step_status_id',
+        ]);
+        $this->belongsTo('Languages', [
+            'foreignKey' => 'language_id',
+        ]);
         $this->belongsTo('Countries', [
             'foreignKey' => 'country_id',
         ]);
         $this->hasMany('Accounts', [
             'foreignKey' => 'user_id',
         ]);
-        $this->hasMany('Donations', [
+        $this->hasMany('Clicks', [
             'foreignKey' => 'user_id',
         ]);
-        $this->hasMany('Favorites', [
+        $this->hasMany('Downline', [
             'foreignKey' => 'user_id',
         ]);
         $this->hasMany('Invitations', [
@@ -96,45 +110,45 @@ class UsersTable extends Table
         $this->hasMany('Logs', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('Matrices', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('Messages', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->hasMany('Notes', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('Notifications', [
             'foreignKey' => 'user_id',
         ]);
         $this->hasMany('Orders', [
             'foreignKey' => 'user_id',
         ]);
-        $this->hasMany('Projects', [
+        $this->hasMany('ProjectStatistics', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('Referrals', [
             'foreignKey' => 'user_id',
         ]);
         $this->hasMany('Sales', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('Tickets', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->hasMany('Transactions', [
             'foreignKey' => 'user_id',
         ]);
-        $this->hasMany('UserPrivacySettings', [
-            'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('UserSkills', [
+        $this->hasMany('Unlocks', [
             'foreignKey' => 'user_id',
         ]);
         $this->hasMany('ChildUsers', [
             'className' => 'Users',
             'foreignKey' => 'parent_id',
         ]);
-        $this->belongsToMany('Goals', [
+        $this->hasMany('Verifications', [
             'foreignKey' => 'user_id',
-            'targetForeignKey' => 'goal_id',
-            'joinTable' => 'users_goals',
-        ]);
-        $this->belongsToMany('Languages', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'language_id',
-            'joinTable' => 'users_languages',
-        ]);
-        $this->belongsToMany('Trees', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'tree_id',
-            'joinTable' => 'users_trees',
         ]);
     }
 
@@ -147,23 +161,19 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('parent_id')
-            ->maxLength('parent_id', 45)
+            ->integer('parent_id')
             ->allowEmptyString('parent_id');
 
         $validator
             ->scalar('username')
             ->maxLength('username', 45)
-            ->allowEmptyString('username');
+            ->allowEmptyString('username')
+            ->add('username', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 45)
+            ->maxLength('password', 64)
             ->allowEmptyString('password');
-
-        $validator
-            ->email('email')
-            ->allowEmptyString('email');
 
         $validator
             ->scalar('first_name')
@@ -174,6 +184,179 @@ class UsersTable extends Table
             ->scalar('last_name')
             ->maxLength('last_name', 45)
             ->allowEmptyString('last_name');
+
+        $validator
+            ->integer('user_role_id')
+            ->allowEmptyString('user_role_id');
+
+        $validator
+            ->integer('user_status_id')
+            ->allowEmptyString('user_status_id');
+
+        $validator
+            ->integer('step_id')
+            ->allowEmptyString('step_id');
+
+        $validator
+            ->integer('step_status_id')
+            ->allowEmptyString('step_status_id');
+
+        $validator
+            ->date('birthday')
+            ->allowEmptyDate('birthday');
+
+        $validator
+            ->integer('language_id')
+            ->allowEmptyString('language_id');
+
+        $validator
+            ->integer('country_id')
+            ->allowEmptyString('country_id');
+
+        $validator
+            ->scalar('address')
+            ->maxLength('address', 45)
+            ->allowEmptyString('address');
+
+        $validator
+            ->scalar('zip')
+            ->maxLength('zip', 45)
+            ->allowEmptyString('zip');
+
+        $validator
+            ->scalar('city')
+            ->maxLength('city', 45)
+            ->allowEmptyString('city');
+
+        $validator
+            ->scalar('phone')
+            ->maxLength('phone', 45)
+            ->allowEmptyString('phone');
+
+        $validator
+            ->scalar('mobile')
+            ->maxLength('mobile', 45)
+            ->allowEmptyString('mobile');
+
+        $validator
+            ->email('email')
+            ->allowEmptyString('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
+            ->scalar('telegram')
+            ->allowEmptyString('telegram')
+            ->add('telegram', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
+            ->scalar('code')
+            ->maxLength('code', 256)
+            ->requirePresence('code', 'create')
+            ->notEmptyString('code');
+
+        $validator
+            ->integer('activated')
+            ->notEmptyString('activated');
+
+        $validator
+            ->integer('terms')
+            ->notEmptyString('terms');
+
+        return $validator;
+    }
+
+    /**
+     * Profilethumb validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationProfilethumb(Validator $validator): Validator
+    {
+        $validator
+            ->add('profilethumb', [
+                'mimeType' => [
+                    'rule' => ['mimeType', ['image/jpg', 'image/png', 'image/jpeg']],
+                    'message' => 'Неверный формат. Разрешены следующие форматы: .png, .jpeg, .jpg',
+                ]
+            ])
+            ->add('profilethumb', [
+                'fileSize' => [
+                    'rule' => ['fileSize', '<=', '1MB'],
+                    'message' => 'Файл слишком большой. Максимальный размер: 1 MB',
+                ]
+            ]);
+
+        return $validator;
+    }
+
+    /**
+     * Password validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationPassword(Validator $validator): Validator
+    {
+        $validator
+            ->add('old_password', [
+                'minlength' => [
+                    'rule' => ['minLength', 5],
+                    'message' => 'Пароль должен быть длиной не менее 5 символов',
+                ]
+            ])
+            ->add('old_password', [
+                'maxlength' => [
+                    'rule' => ['maxLength', 20],
+                    'message' => 'Пароль может состоять максимум из 20 символов.',
+                ]
+            ])
+            ->add('old_password', 'validateOldPassword', [
+                'rule' => 'isOldPassword',
+                'message' => 'Старый пароль, не совпадает',
+                'provider' => 'table',
+            ])
+            ->notEmptyString('old_password', 'Введите новый пароль');
+
+        $validator
+            ->add('password_password', [
+                'minlength' => [
+                    'rule' => ['minLength', 5],
+                    'message' => 'Пароль должен быть длиной не менее 5 символов',
+                ]
+            ])
+            ->add('password_password', [
+                'maxlength' => [
+                    'rule' => ['maxLength', 20],
+                    'message' => 'Пароль может состоять максимум из 20 символов',
+                ]
+            ])
+            ->add('password_password', 'validatePasswordConfirm', [
+                'rule' => 'isPasswordConfirm',
+                'message' => 'Пароли не совпадают',
+                'provider' => 'table',
+            ])
+            ->notEmptyString('password_password', 'Введите новый пароль');
+
+        $validator
+            ->add('password_confirm', [
+                'minlength' => [
+                    'rule' => ['minLength', 5],
+                    'message' => 'Пароль должен быть длиной не менее 5 символов',
+                ]
+            ])
+            ->add('password_confirm', [
+                'maxlength' => [
+                    'rule' => ['maxLength', 20],
+                    'message' => 'Пароль может состоять максимум из 20 символов',
+                ]
+            ])
+            ->add('password_confirm', 'validatePasswordConfirm', [
+                'rule' => 'isPasswordConfirm',
+                'message' => 'Пароли не совпадают',
+                'provider' => 'table',
+            ])
+            ->notEmptyString('password_confirm', 'Введите новый пароль');
 
         return $validator;
     }
@@ -187,18 +370,44 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
-        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+        $rules->add($rules->isUnique(['username'], ['allowMultipleNulls' => true]), ['errorField' => 'username']);
+        $rules->add($rules->isUnique(['email'], ['allowMultipleNulls' => true]), ['errorField' => 'email']);
         $rules->add($rules->existsIn('parent_id', 'ParentUsers'), ['errorField' => 'parent_id']);
         $rules->add($rules->existsIn('user_role_id', 'UserRoles'), ['errorField' => 'user_role_id']);
         $rules->add($rules->existsIn('user_status_id', 'UserStatuses'), ['errorField' => 'user_status_id']);
+        $rules->add($rules->existsIn('step_id', 'Steps'), ['errorField' => 'step_id']);
+        $rules->add($rules->existsIn('step_status_id', 'StepStatuses'), ['errorField' => 'step_status_id']);
+        $rules->add($rules->existsIn('language_id', 'Languages'), ['errorField' => 'language_id']);
         $rules->add($rules->existsIn('country_id', 'Countries'), ['errorField' => 'country_id']);
 
         return $rules;
     }
 
+
+    public function isOldPassword($value, array $context): bool
+    {
+        $hasher = new DefaultPasswordHasher();
+        $user = $this->get($context['data']['id']);
+
+        if ($hasher->check($value, $user->password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isPasswordConfirm($value, array $context): bool
+    {
+        if ($context['data']['password_password'] != $context['data']['password_confirm']) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public function createUser($params = null)
     {
+
         $data = $this->newEmptyEntity();
         $data->parent_id = $params['parent_id'];
         $data->username = $params['username'];

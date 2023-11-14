@@ -1,7 +1,7 @@
 <div class="card-header-tab card-header">
-    <div class="card-header-title font-size-lg text-capitalize fw-normal">
+    <div class="card-header-title font-size-lg fw-normal" style="text-transform: none;">
         <i class="header-icon pe-7s-cloud-download icon-gradient bg-amy-crisp"></i>
-        Загрузки
+        Скачать рабочий материал
     </div>
 
 </div>
@@ -11,19 +11,19 @@
             <li class="nav-item">
                 <a href="javascript:void(0);" class="nav-link">
                     <i class="nav-link-icon pe-7s-chat"></i>
-                    <span>Записи природы</span>
+                    <span>Рабочая тетрадь</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="javascript:void(0);" class="nav-link">
                     <i class="nav-link-icon pe-7s-chat"></i>
-                    <span>Записи природы</span>
+                    <span>Контрольный список</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="javascript:void(0);" class="nav-link">
                     <i class="nav-link-icon pe-7s-chat"></i>
-                    <span>Записи природы</span>
+                    <span>Вопросы-Ответы</span>
                 </a>
             </li>
         </ul>

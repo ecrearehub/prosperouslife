@@ -5,28 +5,21 @@
     </div>
 </div>
 <div class="card-body">
+    <?php if ($conferences != null): ?>
 
-    <table class="mb-0 table table-borderless">
-        <thead>
-            <tr>
-                <th>
-                    Дата
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <?php echo preg_replace("/[^ ]*$/", '', substr($news->message, 0, 100)); ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <?php echo $this->Html->link('Полный текст...', '/news/view/' . $news->id); ?>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <?php else: ?>
+
+        <table class="mb-0 table table-borderless">
+            <tbody>
+                <tr>
+                    <td>
+                        Нет записей
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    <?php endif ?>
 
 </div>
 <div class="card-footer">

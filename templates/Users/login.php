@@ -31,11 +31,11 @@
                                 </div>
                             </div>
                             <?php /*
-                                   <div class="position-relative form-check mb-3">
-                                       <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
-                                       <label for="exampleCheck" class="form-label form-check-label">Keep me logged in</label>
-                                   </div>
-                                   */?>
+          <div class="position-relative form-check mb-3">
+              <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
+              <label for="exampleCheck" class="form-label form-check-label">Keep me logged in</label>
+          </div>
+          */?>
                             <div class="divider row"></div>
                             <div class="d-flex align-items-center">
                                 <div class="ms-auto">
@@ -44,6 +44,19 @@
                                 </div>
                             </div>
                             <?php echo $this->Form->end(); ?>
+                            <div style="justify-content: center; display:flex; margin-top:50px;">
+                                <ul class="nav">
+                                    <a href="https://prosperouslife.club/privacy-policy/" class="nav-link active">
+                                        Privacy Policy
+                                    </a>
+                                    <a href="https://prosperouslife.club/imprint/" class="nav-link">
+                                        Imprint
+                                    </a>
+                                    <a href="https://prosperouslife.club/cookie/" class="nav-link">
+                                        Cookie
+                                    </a>
+                                </ul>
+                            </div>
                             <div class="text-center text-muted opacity-8 mt-3">
                                 Copyright © 2023 PROSPEROUS LIFE CLUB. All rights reserved
                             </div>

@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Steps Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $Users
+ *
  * @method \App\Model\Entity\Step newEmptyEntity()
  * @method \App\Model\Entity\Step newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Step[] newEntities(array $data, array $options = [])
@@ -44,6 +46,10 @@ class StepsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Users', [
+            'foreignKey' => 'step_id',
+        ]);
     }
 
     /**
